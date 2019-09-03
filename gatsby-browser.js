@@ -1,3 +1,3 @@
-// custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
+require('typeface-bangers');
+require('typeface-patrick-hand-sc');
+require("./src/css/stylesheet.css");

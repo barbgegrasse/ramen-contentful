@@ -2,8 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 
 
@@ -28,7 +27,7 @@ class BlogPostTemplate extends React.Component {
 			{documentToReactComponents(post.description.json)}
           </header>
           <footer>
-            <Bio />
+     
           </footer>
         </article>
 
@@ -67,6 +66,11 @@ export const pageQuery = graphql`
     }
     contentfulArticle(slug: { eq: $slug }) {
         titre
+		image{
+			fluid{
+				src
+			}
+		}
         description{
             json
         }

@@ -67,3 +67,10 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+package-lock.json
+# Local Netlify folder
+.netlify
+# SASS FILES
+**/.sass-cache
+**/.sass-cache/*
