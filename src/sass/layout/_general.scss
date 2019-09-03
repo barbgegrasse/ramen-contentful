@@ -1,0 +1,49 @@
+// 1. Layout principal
+.main-container {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    min-height: 100vh;
+    @include media-breakpoint-down(xl) { //1200
+        grid-template-columns: 20% 80%;
+    }
+    @include media-breakpoint-down(md) { //768
+        display: block;
+    }
+}
+
+.main-section {
+    grid-column: 2/3;
+    grid-row: 1/1;
+}
+
+.sidebar-left{
+    grid-column: 1/2;
+    grid-row: 1/1;
+
+    @include media-breakpoint-down(md) {
+        display: block;
+    }
+
+    .container-fixed{
+        position: fixed;
+        padding: 10px 0;
+        top: 0;
+        width: 20%;
+        height: 100vh;
+        background-image: url(../images/bg-nav.jpg);
+        background-size:cover;
+        @include media-breakpoint-down(md) {
+            background: none;
+        }
+    }
+}
+
+
+.central-container{
+    @include media-breakpoint-down(md) {
+        padding: 0px 65px;
+    }
+    @include media-breakpoint-down(sm) {
+        padding: 65px 0px;
+    }
+}

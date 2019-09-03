@@ -1,0 +1,103 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+.hamburger{
+    display: inline-block;
+    background: red;
+    padding: 10px;
+    cursor: pointer;
+
+    @include media-breakpoint-down(lg) {
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        z-index: 999;
+    }
+
+    .line{
+        display: block;
+        margin: 5px;
+        width: 30px;
+        background-color: #FFF;
+        height: 1px;
+    }
+}
+.main-nav{
+    .brand-logo{
+        display: block;
+        text-align:center;
+        z-index: 10;
+        position: relative;
+        @include media-breakpoint-down(lg) {
+            max-height: 40vh;
+        }
+    }
+    .list{ //mon ul
+        list-style-type: none; padding: 0 5px;
+        @include media-breakpoint-down(lg) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 60vh;
+            text-align: center;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .list-item{ //mon li
+
+            @include media-breakpoint-down(lg) {
+                opacity: 0;
+                font-size: 25px;
+
+                &:nth-child(1){
+                    transition: all 1s ease-out 0.2s;
+                }
+                &:nth-child(2){
+                    transition: all 1s ease-out 0.5s;
+                }
+                &:nth-child(3){
+                    transition: all 1s ease-out 0.8s;
+                }
+            }
+
+            @include shift(all,.3s,ease-in);
+            a {
+                display: block;
+                padding: 3px 7px;
+                transform: matrix(0.99,-0.1,0,0.90,0,9);
+                background: #FFF;
+                color: red; 
+                text-decoration: none; 
+                cursor: pointer;
+                &.active, &:hover{
+                    background: red; color : #FFF;
+                }
+                @include shift(all,.3s,ease-in );
+            }
+
+        }
+    }
+    @include media-breakpoint-down(lg) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../images/bg-nav-tablettes.jpg);
+        
+        clip-path: circle(0px at 0% 0%); 
+        -webkit-clip-path: circle(0px at 0% 0%);
+
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+        transition: all 1s ease-in-out;
+        &.open{
+            clip-path: circle(1000px at 10% 10%);
+            -webkit-clip-path: circle(1000px at 10% 10%);
+            .list-item{opacity: 1;}
+        }
+    }
+}
