@@ -10,7 +10,6 @@ import Layout from '../components/layout/layout'
 const Recettes = ({data}) => (
     <Layout>
 		<SEO title="Recettes" />
-				{console.log(data)}
         <p className="title-site">Ramen Noob</p>
         <blockquote className="quote-logo">From ramen noob to ramen lord</blockquote>
         <section className="container">

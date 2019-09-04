@@ -32,7 +32,6 @@ class BlogIndex extends React.Component {
                     <div className="row space40 align-items-center">
                         {categories.map(categorie => (
                             <div className="col-sm-6">
-                                {console.log(document)}
                                 <h2>
                                     <Link to={`recettes/${categorie.slug}`}>{categorie.titre}</Link>
                                 </h2>
