@@ -8,12 +8,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allContentfulArticle{
-          edges {
-            node {
-              slug
+        allContentfulArticle {
+            edges {
+                node {
+                    id
+                    slug
+                    idCategorie {
+                        titre
+                        slug
+                    }
+                }
             }
-          }
         }
       }
     `
@@ -33,13 +38,13 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: post.node.slug,
-      component: blogPost,
-      context: {
-        slug: post.node.slug,
-        previous,
-        next,
-      },
+        path: `/recettes/${post.node.idCategorie.slug}/${post.node.slug}`,
+        component: blogPost,
+        context: {
+            slug: post.node.slug,
+            previous,
+            next,
+        },
     })
   })
 }

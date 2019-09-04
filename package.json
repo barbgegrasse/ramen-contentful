@@ -33,6 +33,7 @@
     "typeface-patrick-hand-sc": "0.0.72"
   },
   "devDependencies": {
+    "env-cmd": "^10.0.1",
     "prettier": "^1.18.2"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -52,5 +53,6 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
-  }
+  },
+  "develop": "env-cmd --file .env.development --fallback gatsby develop"
 }
