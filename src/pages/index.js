@@ -11,7 +11,7 @@ class BlogIndex extends React.Component {
  	render() {
 		const { data } = this.props
 		const siteTitle = data.site.siteMetadata.title
-		const posts = data.allContentfulArticle.edges
+        const categories = data.allContentfulCategorie.nodes
 		return(
 			<Layout>
 				<SEO title="Home" />
@@ -28,43 +28,21 @@ class BlogIndex extends React.Component {
 						</div>
 					</div>
 				</section>
+                <section className="container">
+                    <div className="row space40 align-items-center">
+                        {categories.map(categorie => (
+                            <div className="col-sm-6">
+                                {console.log(document)}
+                                <h2>
+                                    <Link to={`recettes/${categorie.slug}`}>{categorie.titre}</Link>
+                                </h2>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 			</Layout >
 		)
-    
-    /*
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-
-        {posts.map(({ node }) => {
-          console.log(node);
-          const title = node.titre || node.slug
-          return (
-            <article key={node.slug}>
-              <header>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link style={{ boxShadow: `none` }} to={node.slug}>
-                    {title}
-                  </Link>
-                </h3>
-              </header>
-              <section>
-                  lorem ipsum
-              </section>
-            </article>
-            
-          )
-       
-        })}
-      </Layout>
-    )
-    */
-  }
+    }
 }
 
 export default BlogIndex
@@ -77,6 +55,12 @@ export const pageQuery = graphql`
       }
     }
 
+    allContentfulCategorie {
+        nodes {
+            titre
+            slug
+        }
+    }
 
     allContentfulArticle {
       edges {

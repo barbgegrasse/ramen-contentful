@@ -54,5 +54,6 @@ export const pageQuery = graphql`
                 }
             }
         }
+
     }
 `

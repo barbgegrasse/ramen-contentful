@@ -47,7 +47,7 @@ class Nav extends Component {
         }
         return (
             <aside className="sidebar-left">
-                <div class="container-fixed" >
+                <div className="container-fixed" >
                     <div id="hamburger" onClick={this.open_nav} className="hamburger d-inline-block d-lg-none">
                         <span className="line"></span>
                         <span className="line"></span>
