@@ -22,7 +22,6 @@ const Recettes = ({data}) => (
             <div className="row">
             {data.allContentfulArticle.edges.map(document => (
                 <div className="col-sm-6">
-                    {console.log(document)}
                     <h2>
                         <Link to={`recettes/${document.node.idCategorie.slug}/${document.node.slug}`}>{document.node.titre}</Link>
                     </h2>
@@ -36,7 +35,7 @@ const Recettes = ({data}) => (
 
 export default Recettes
 
-export const pageQuery = graphql`  
+export const pageQuery = graphql`
     query IndexQuery {
         allContentfulArticle {
             edges {
