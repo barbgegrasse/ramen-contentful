@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the categories component.
+// -----------------------------------------------------------------------------
+.clip-polygon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 350px;
+    @include shift( all, 0.3s, ease-in-out);
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    //clip-path: polygon(0% 25%, 25% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);
+    &:hover{
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+        //clip-path: polygon(0% 0, 0 0%, 100% 0%, 100% 100%, 75% 100%, 0% 100%);
+    }
+}
+
+.illu-home{
+    //clip-path: polygon(0 15%, 15% 0, 100% 0, 100% 85%, 100% 85%, 0 85%);
+}

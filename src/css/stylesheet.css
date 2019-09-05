@@ -3800,7 +3800,10 @@ body {
 .h-title {
   background: red;
   color: #FFF;
-  padding: 7px 20px; }
+  padding: 7px 20px;
+  display: inline-block; }
+  .h-title a:hover {
+    text-decoration: none; }
   @media (min-width: 576px) {
     .h-title {
       font-size: 110px;
@@ -4004,5 +4007,19 @@ a {
       -webkit-clip-path: circle(1000px at 10% 10%); }
       .main-nav.open .list-item {
         opacity: 1; } }
+
+.clip-polygon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 350px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); }
+  .clip-polygon:hover {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%); }
 
 /*# sourceMappingURL=stylesheet.css.map */

@@ -26,7 +26,7 @@ const Image = () => {
     }
     `)
 
-    return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+    return <Img className="illu-home" fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
 export default Image

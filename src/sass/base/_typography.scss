@@ -33,6 +33,10 @@ body {
     background: red;
     color : #FFF;
     padding: 7px 20px;
+    display: inline-block;
+    a:hover{
+        text-decoration: none;
+    }
     @include media-breakpoint-up(sm) {
         font-size: 110px;
         padding: 7px 15px;
