@@ -1,6 +1,8 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import TransitionLink from "gatsby-plugin-transition-link"
+//import { TransitionPortal } from "gatsby-plugin-transition-link";
+import { TransitionState } from "gatsby-plugin-transition-link";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import BackgroundImage from 'gatsby-background-image'
 
@@ -17,6 +19,10 @@ class BlogIndex extends React.Component {
 		const { data } = this.props
 		const siteTitle = data.site.siteMetadata.title
         const categories = data.allContentfulCategorie.nodes
+        const Box = posed.div({
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+        })
 
 		return(
 			<Layout>
@@ -46,19 +52,35 @@ class BlogIndex extends React.Component {
                     <div className="row space40 align-items-center mt-4">
                         {categories.map(categorie => (
                             <div className="col-sm-3">
+                                <TransitionState>
+                                    {({ transitionStatus }) => {
+                                        return (
+                                            <Box
+                                            className="box"
+                                            pose={
+                                                ['entering', 'entered'].includes(transitionStatus)
+                                                ? 'visible'
+                                                : 'hidden'
+                                            }
+                                            />
+                                        )
+                                    }}
+                                </TransitionState>  
                                 <BackgroundImage
                                     Tag="section"
                                     className="clip-polygon"
                                     fluid={categorie.vignette.fixed}
                                     backgroundColor={`#040e18`}
                                 >
-                                    <h3 class="h-title h1-title clr-white">
-                                        <AniLink className="text-white"  paintDrip to={`recettes/${categorie.slug}`} hex="#ee4749" duration={1}>
-                                            {categorie.titre}
-                                        </AniLink>
-                                    </h3>
-                                
+                                    <h3 className="h-title h1-title text-white"><AniLink paintDrip to={`/recettes/${categorie.slug}`} hex="#ee4749" duration={1} >{categorie.titre}</AniLink></h3>
                                 </BackgroundImage>
+<TransitionLink
+  to={props.to}
+  exit={{ length: 0.5 }}
+  entry={{ delay: 0.5 }}
+  >
+    Go to page 2
+</TransitionLink>
                             </div>
                         ))}
                     </div>
