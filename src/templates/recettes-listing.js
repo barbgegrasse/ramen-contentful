@@ -4,15 +4,15 @@ import { graphql } from "gatsby"
 import { Link } from "gatsby"
 //import AniLink from "gatsby-plugin-transition-link/AniLink";
 //import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Img from "gatsby-image"
+//import Img from "gatsby-image"
 import SEO from "../components/seo"
 
 class RecetteTemplate extends React.Component {
     render() {
         const categorie = this.props.data.contentfulCategorie
         const articles = this.props.data.allContentfulArticle.edges
-        const siteTitle = this.props.data.site.siteMetadata.title
-    
+        //const siteTitle = this.props.data.site.siteMetadata.title
+
         return (
             <>
                 <SEO

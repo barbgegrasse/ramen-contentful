@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the detail recettes pages
+// -----------------------------------------------------------------------------
+
+/* HEADER RECETTES*/
+.hero_container {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60vh;
+    .background-hero{min-height: 60vh}
+}
+
+.section-bg {
+    min-height: 65vh;
+    width: 100%;
+}
+
+.detail-recette {
+    padding-top: 200px;
+}
+
+.presentation-recette {
+    background-color: #FFF;
+}
+
+.main-citation {
+    position: absolute;
+    height: 50%;
+    bottom: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    max-width: 470px;
+    text-align: center;
+    transform: translateX(50%);
+}
+
+/* MAIN CONTENT*/
+

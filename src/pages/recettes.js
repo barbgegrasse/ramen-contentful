@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+//import AniLink from "gatsby-plugin-transition-link/AniLink";
+import { Link } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import SEO from "../components/seo"
@@ -21,9 +22,9 @@ const Recettes = ({data}) => (
             {data.allContentfulArticle.edges.map(document => (
                 <div key={document.node.id} className="col-sm-6">
                     <h2>
-                        <AniLink duration={1} to={`recettes/${document.node.idCategorie.slug}/${document.node.slug}`}>
+                        <Link to={`recettes/${document.node.idCategorie.slug}/${document.node.slug}`}>
                             {document.node.titre}
-                        </AniLink>
+                        </Link>
                     </h2>
                     <div>
                         {documentToReactComponents(document.node.description.json)}

@@ -4019,4 +4019,37 @@ body {
   .clip-polygon:hover {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%); }
 
+/* HEADER RECETTES*/
+.hero_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 60vh; }
+  .hero_container .background-hero {
+    min-height: 60vh; }
+
+.section-bg {
+  min-height: 65vh;
+  width: 100%; }
+
+.detail-recette {
+  padding-top: 200px; }
+
+.presentation-recette {
+  background-color: #FFF; }
+
+.main-citation {
+  position: absolute;
+  height: 50%;
+  bottom: 0;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  max-width: 470px;
+  text-align: center;
+  transform: translateX(50%); }
+
+/* MAIN CONTENT*/
+
 /*# sourceMappingURL=stylesheet.css.map */
