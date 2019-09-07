@@ -1,45 +1,40 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import TransitionLink from "gatsby-plugin-transition-link"
+//import { Link, graphql } from "gatsby"
+//import TransitionLink from "gatsby-plugin-transition-link"
 //import { TransitionPortal } from "gatsby-plugin-transition-link";
-import { TransitionState } from "gatsby-plugin-transition-link";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import BackgroundImage from 'gatsby-background-image'
 
-import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 
 import IlluHome from '../components/images/IlluHome.js'
+import { TransitionPortal } from "gatsby-plugin-transition-link";
 
 /*
 <img className="poly" src={categorie.vignette.fixed.src} srcSet={categorie.vignette.fixed.srcSet} alt="" title="" />
 */
-class BlogIndex extends React.Component {
+class IndexPage extends React.Component {
  	render() {
 		const { data } = this.props
-		const siteTitle = data.site.siteMetadata.title
+		//const siteTitle = data.site.siteMetadata.title
         const categories = data.allContentfulCategorie.nodes
-        const Box = posed.div({
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-        })
 
 		return(
-			<Layout>
-				<SEO title="Home" />
-				<p className="title-site">Ramen Noob</p>
-				<blockquote className="quote-logo">From ramen noob to ramen lord</blockquote>
-				<section className="container">
-					<div className="row space40 align-items-center">
-						<div className="col-12 col-md-6">
-							<h1 className="h-title h1-title">Les ramens qu'est ce que c'est ?</h1>
-							<p className="mt-4">C'est mon blog dédié à tout ce qui concerne Ramen. <br />Je l'ai créé dans le cadre de mon expérience d'apprentissage et pour partager  ce que j'ai appris tout au long de mon parcours vers la création de mon  Ramen "parfait".  Je posterai des recettes, des expériences (succès et échecs),  des photos de ramen, des critiques de livres, de restaurants,  d'équipement et d'ingrédients, fondamentalement  tout ce que je trouve en rapport  avec les ramen qui est intéressant !</p>
-						</div>
-						<div className="col-12 col-md-6">
-							<IlluHome />
-						</div>
-					</div>
-				</section>
+            <>
+                <SEO title="Home" />
+                <p className="title-site">Ramen Noob</p>
+                <blockquote className="quote-logo">From ramen noob to ramen lord</blockquote>
+                <section className="container">
+                    <div className="row space40 align-items-center">
+                        <div className="col-12 col-md-6">
+                            <h1 className="h-title h1-title">Les ramens qu'est ce que c'est ?</h1>
+                            <p className="mt-4">C'est mon blog dédié à tout ce qui concerne Ramen. <br />Je l'ai créé dans le cadre de mon expérience d'apprentissage et pour partager  ce que j'ai appris tout au long de mon parcours vers la création de mon  Ramen "parfait".  Je posterai des recettes, des expériences (succès et échecs),  des photos de ramen, des critiques de livres, de restaurants,  d'équipement et d'ingrédients, fondamentalement  tout ce que je trouve en rapport  avec les ramen qui est intéressant !</p>
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <IlluHome />
+                        </div>
+                    </div>
+                </section>
                 <section className="container mt-4">
                     <div className="row space40 align-items-center ">
                         <div className="col-12">
@@ -52,20 +47,6 @@ class BlogIndex extends React.Component {
                     <div className="row space40 align-items-center mt-4">
                         {categories.map(categorie => (
                             <div className="col-sm-3">
-                                <TransitionState>
-                                    {({ transitionStatus }) => {
-                                        return (
-                                            <Box
-                                            className="box"
-                                            pose={
-                                                ['entering', 'entered'].includes(transitionStatus)
-                                                ? 'visible'
-                                                : 'hidden'
-                                            }
-                                            />
-                                        )
-                                    }}
-                                </TransitionState>  
                                 <BackgroundImage
                                     Tag="section"
                                     className="clip-polygon"
@@ -74,23 +55,16 @@ class BlogIndex extends React.Component {
                                 >
                                     <h3 className="h-title h1-title text-white"><AniLink paintDrip to={`/recettes/${categorie.slug}`} hex="#ee4749" duration={1} >{categorie.titre}</AniLink></h3>
                                 </BackgroundImage>
-<TransitionLink
-  to={props.to}
-  exit={{ length: 0.5 }}
-  entry={{ delay: 0.5 }}
-  >
-    Go to page 2
-</TransitionLink>
                             </div>
                         ))}
                     </div>
                 </section>
-			</Layout >
+            </>
 		)
     }
 }
 
-export default BlogIndex
+export default IndexPage
 
 export const pageQuery = graphql`
   query {

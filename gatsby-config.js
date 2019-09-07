@@ -9,6 +9,12 @@ module.exports = {
     },
   },
   plugins: [
+    {
+        resolve: "gatsby-plugin-transition-link",
+        options: {
+            layout: require.resolve(`./src/components/layout/Layout.js`)
+        }
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -39,7 +45,6 @@ module.exports = {
         name: `assets`,
       },
     },
-    `gatsby-plugin-transition-link`,
     'gatsby-plugin-react-helmet',
     {
         resolve: `gatsby-source-filesystem`,

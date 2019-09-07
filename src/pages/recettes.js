@@ -3,12 +3,12 @@ import { Link, graphql } from 'gatsby'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import SEO from "../components/seo"
-import Img from 'gatsby-image'
-import Layout from '../components/layout/layout'
+//import Img from 'gatsby-image'
+//import Layout from '../components/layout/layout'
 
 
 const Recettes = ({data}) => (
-    <Layout>
+    <>
 		<SEO title="Recettes" />
         <p className="title-site">Ramen Noob</p>
         <blockquote className="quote-logo">From ramen noob to ramen lord</blockquote>
@@ -24,12 +24,14 @@ const Recettes = ({data}) => (
                     <h2>
                         <Link to={`recettes/${document.node.idCategorie.slug}/${document.node.slug}`}>{document.node.titre}</Link>
                     </h2>
-                    <p>{documentToReactComponents(document.node.description.json)}</p>
+                    <p>
+                        {documentToReactComponents(document.node.description.json)}
+                    </p>
                 </div>
             ))}
             </div>
         </section>
-    </Layout>
+    </>
 )
 
 export default Recettes

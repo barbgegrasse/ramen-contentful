@@ -3882,20 +3882,14 @@ a {
       margin-top: 40px; } }
 
 body {
-  paddgin: 0 0 80px 0; }
+  padding: 0 0 80px 0; }
 
 .main-container {
-  display: grid;
-  grid-template-columns: 15% 85%;
-  min-height: 100vh;
-  grid-template-columns: 20% 80%; }
+  padding-left: 380px;
+  min-height: 100vh; }
   @media (max-width: 991.98px) {
     .main-container {
-      display: block; } }
-
-.main-section {
-  grid-column: 2/3;
-  grid-row: 1/1; }
+      padding-left: 0px; } }
 
 .sidebar-left {
   grid-column: 1/2;

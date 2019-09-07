@@ -1,20 +1,18 @@
 // 1. Layout principal
-body{paddgin : 0 0 80px 0;}
+body{padding : 0 0 80px 0;}
 .main-container {
-    display: grid;
-    grid-template-columns: 15% 85%;
+    padding-left: 380px;
     min-height: 100vh;
     @include media-breakpoint-down(xl) { //1200
-        grid-template-columns: 20% 80%;
+        
     }
     @include media-breakpoint-down(md) { //768
-        display: block;
+        padding-left: 0px;
     }
 }
 
 .main-section {
-    grid-column: 2/3;
-    grid-row: 1/1;
+
 }
 
 .sidebar-left{

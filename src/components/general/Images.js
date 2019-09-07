@@ -38,3 +38,5 @@ const Image = (props) => (
         }}
     />
 )
+
+export default Image

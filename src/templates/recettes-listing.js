@@ -1,8 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-
-import Layout from "../components/layout/layout"
+import TransitionLink from "gatsby-plugin-transition-link"
+//import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Img from "gatsby-image"
 import SEO from "../components/seo"
 
 class RecetteTemplate extends React.Component {
@@ -13,7 +13,7 @@ class RecetteTemplate extends React.Component {
         console.log(articles);
 
         return (
-            <Layout location={this.props.location} title={siteTitle}>
+            <>
                 <SEO
                     title={categorie.titre}
                     description={categorie.slug || categorie.excerpt}
@@ -27,13 +27,18 @@ class RecetteTemplate extends React.Component {
                         <div className="row">
                             {articles.map( article => (
                                 <article className="col-12 col-sm-4">
-                                    <h2>{article.node.titre}</h2>
+                                    <Link to={`recettes/${article.node.idCategorie.slug}/${article.node.slug}`}>
+                                        <Img fixed={article.node.image.fixed} />
+                                    </Link>
+                                    <Link to={`recettes/${article.node.idCategorie.slug}/${article.node.slug}`}><h2>{article.node.titre}</h2></Link>
+                                    <p>{article.node.tempsDePreparation}</p>
+                                    <p>{article.node.descriptionCourte}</p>
                                 </article>
                             ))}
                         </div>
                     </header>
                 </section>
-            </Layout>
+            </>
         )
     }
 }
@@ -55,11 +60,23 @@ export const pageQuery = graphql`
         allContentfulArticle(filter: {idCategorie: {slug: {eq: $slug}}}) {
             edges {
                 node {
-                titre
-                idCategorie {
                     titre
-                }
-                slug
+                    tempsDePreparation,
+                    descriptionCourte
+                    idCategorie {
+                        titre
+                        slug
+                    }
+                    slug
+                    image {
+                        fixed {
+                            src
+                            srcSet
+                            srcSetWebp
+                            srcWebp
+                            width
+                        }
+                    }
                 }
             }
         }

@@ -1,11 +1,13 @@
 import React, {Component} from "react"
 import { Link  } from 'gatsby'
 import TransitionLink from "gatsby-plugin-transition-link"
+import { TransitionState } from "gatsby-plugin-transition-link";
+
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import Logo from '../images/Logo'
 
 
-class Nav extends Component {
+class LeftNav extends Component {
 
     constructor(props){
         super(props);
@@ -36,6 +38,7 @@ class Nav extends Component {
     }
 
     render(){
+
         const isActive = ({ isCurrent }) => {
             return isCurrent ? { className: "active" } : null
         }
@@ -47,6 +50,41 @@ class Nav extends Component {
         }
         return (
             <aside className="sidebar-left">
+                <div className="container-fixed" >
+                    <div id="hamburger" onClick={this.open_nav} className="hamburger d-inline-block d-lg-none">
+                        <span className="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                    </div>
+                    <nav id="main-nav" className="main-nav" role="navigation">
+
+                        <AniLink fade to="/">
+                            <Logo />
+                        </AniLink>
+                        <ul class="list">
+                            <li class="list-item">
+                                <AniLink getProps={isActive} {...this.props} fade to="/">
+                                    Accueil
+                                </AniLink>
+                            </li>
+                            <li class="list-item">
+                                <AniLink getProps={isPartiallyActive} {...this.props}    to="/recettes">
+                                   Recettes
+                                </AniLink>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+        );
+    }
+}
+
+export default LeftNav;
+
+
+/*
+ <aside className="sidebar-left">
                 <div className="container-fixed" >
                     <div id="hamburger" onClick={this.open_nav} className="hamburger d-inline-block d-lg-none">
                         <span className="line"></span>
@@ -73,8 +111,5 @@ class Nav extends Component {
                     </nav>
                 </div>
             </aside>
-        );
-    }
-}
 
-export default Nav;
+*/
