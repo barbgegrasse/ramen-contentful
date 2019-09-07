@@ -69,7 +69,7 @@ class LeftNav extends Component {
                             </li>
                             <li class="list-item">
                                 <AniLink getProps={isPartiallyActive} {...this.props}    to="/recettes">
-                                   Recettes
+                                   Recettes de porc
                                 </AniLink>
                             </li>
                         </ul>
