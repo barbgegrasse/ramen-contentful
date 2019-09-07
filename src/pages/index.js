@@ -46,11 +46,11 @@ class IndexPage extends React.Component {
                     </div>
                     <div className="row space40 align-items-center mt-4">
                         {categories.map(categorie => (
-                            <div className="col-sm-3">
+                            <div key={categorie.id} className="col-sm-3">
                                 <BackgroundImage
                                     Tag="section"
                                     className="clip-polygon"
-                                    fluid={categorie.vignette.fixed}
+                                    fixed={categorie.vignette.fixed}
                                     backgroundColor={`#040e18`}
                                 >
                                     <h3 className="h-title h1-title text-white"><AniLink paintDrip to={`/recettes/${categorie.slug}`} hex="#ee4749" duration={1} >{categorie.titre}</AniLink></h3>
@@ -76,6 +76,7 @@ export const pageQuery = graphql`
 
     allContentfulCategorie {
         nodes {
+            id
             titre
             slug
             vignette {

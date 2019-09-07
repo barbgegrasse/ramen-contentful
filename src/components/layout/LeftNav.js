@@ -81,35 +81,3 @@ class LeftNav extends Component {
 }
 
 export default LeftNav;
-
-
-/*
- <aside className="sidebar-left">
-                <div className="container-fixed" >
-                    <div id="hamburger" onClick={this.open_nav} className="hamburger d-inline-block d-lg-none">
-                        <span className="line"></span>
-                        <span className="line"></span>
-                        <span className="line"></span>
-                    </div>
-                    <nav id="main-nav" className="main-nav" role="navigation">
-                        <div className="brand-logo">
-                            <AniLink paintDrip to="/" hex="#ee4749" duration={1}>
-                                <Logo />
-                            </AniLink>
-                        </div>
-                        <ul className="list">
-                            <li className="list-item">
-                                <AniLink getProps={isActive} {...this.props}  paintDrip to="/" hex="#ee4749" duration={1}>
-                                    Accueil
-                                </AniLink>
-                            </li>
-                            <li className="list-item">
-                                <AniLink getProps={isPartiallyActive} {...this.props}  paintDrip to="/recettes" hex="#ee4749" duration={1}>
-                                Recettes</AniLink>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </aside>
-
-*/
