@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import SEO from "../components/seo"
-//import Img from 'gatsby-image'
-//import Layout from '../components/layout/layout'
 
 
 const Recettes = ({data}) => (
@@ -15,18 +14,20 @@ const Recettes = ({data}) => (
         <section className="container">
             <div className="row space40 align-items-center">
                 <div className="col-12 col-md-6">
-                    <h1 className="h-title h1-title">Listing des recettes</h1>
+                    <h1 className="h-title h1-title">Listing des recettes - recettes.js</h1>
                 </div>
             </div>
             <div className="row">
             {data.allContentfulArticle.edges.map(document => (
-                <div className="col-sm-6">
+                <div key={document.node.id} className="col-sm-6">
                     <h2>
-                        <Link to={`recettes/${document.node.idCategorie.slug}/${document.node.slug}`}>{document.node.titre}</Link>
+                        <AniLink duration={1} to={`recettes/${document.node.idCategorie.slug}/${document.node.slug}`}>
+                            {document.node.titre}
+                        </AniLink>
                     </h2>
-                    <p>
+                    <div>
                         {documentToReactComponents(document.node.description.json)}
-                    </p>
+                    </div>
                 </div>
             ))}
             </div>

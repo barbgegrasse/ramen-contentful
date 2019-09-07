@@ -1,18 +1,16 @@
 import React from "react"
 //import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 //import TransitionLink from "gatsby-plugin-transition-link"
 //import { TransitionPortal } from "gatsby-plugin-transition-link";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+//import AniLink from "gatsby-plugin-transition-link/AniLink";
 import BackgroundImage from 'gatsby-background-image'
 
 import SEO from "../components/seo"
 
 import IlluHome from '../components/images/IlluHome.js'
-import { TransitionPortal } from "gatsby-plugin-transition-link";
 
-/*
-<img className="poly" src={categorie.vignette.fixed.src} srcSet={categorie.vignette.fixed.srcSet} alt="" title="" />
-*/
+
 class IndexPage extends React.Component {
  	render() {
 		const { data } = this.props
@@ -39,9 +37,7 @@ class IndexPage extends React.Component {
                     <div className="row space40 align-items-center ">
                         <div className="col-12">
                             <h2 className="h-title h1-title">Que trouve t-on dans un bol de ramen ?</h2>
-                            <p class="mt-4">Un bon bol de ramen se compose de 4 éléments clés. Ex non qui sint exercitation in consequat nostrud dolor amet consectetur culpa labore sit duis. Est eiusmod do ad officia labore ea ullamco elit ullamco do. Cupidatat elit in adipisicing exercitation cupidatat. Id cupidatat qui labore aute dolore duis culpa. Magna laborum est laborum velit labore occaecat excepteur ullamco culpa dolor sunt sint occaecat. Id in esse qui esse est elit quis deserunt ea ad ea sunt. Reprehenderit elit nisi est enim duis culpa sint qui et cillum esse commodo.</p>
-                            <p>Do occaecat amet sint duis voluptate sit ullamco occaecat eiusmod commodo pariatur laboris fugiat sit. Consequat elit ex irure id magna nisi eiusmod non esse non reprehenderit dolor culpa anim. Elit dolore minim pariatur reprehenderit duis ad magna tempor ut aliqua qui.</p>
-                            <p>Do occaecat amet sint duis voluptate sit ullamco occaecat eiusmod commodo pariatur laboris fugiat sit. Consequat elit ex irure id magna nisi eiusmod non esse non reprehenderit dolor culpa anim. Elit dolore minim pariatur reprehenderit duis ad magna tempor ut aliqua qui.</p>
+                            <p className="mt-4">Un bon bol de ramen se compose de 4 éléments clés. Ex non qui sint exercitation in consequat nostrud dolor amet consectetur culpa labore sit duis. Est eiusmod do ad officia labore ea ullamco elit ullamco do. Cupidatat elit in adipisicing exercitation cupidatat. Id cupidatat qui labore aute dolore duis culpa. Magna laborum est laborum velit labore occaecat excepteur ullamco culpa dolor sunt sint occaecat. Id in esse qui esse est elit quis deserunt ea ad ea sunt. Reprehenderit elit nisi est enim duis culpa sint qui et cillum esse commodo.</p>
                         </div>
                     </div>
                     <div className="row space40 align-items-center mt-4">
@@ -50,10 +46,12 @@ class IndexPage extends React.Component {
                                 <BackgroundImage
                                     Tag="section"
                                     className="clip-polygon"
-                                    fixed={categorie.vignette.fixed}
+                                    fluid={categorie.vignette.fluid}
                                     backgroundColor={`#040e18`}
                                 >
-                                    <h3 className="h-title h1-title text-white"><AniLink paintDrip to={`/recettes/${categorie.slug}`} hex="#ee4749" duration={1} >{categorie.titre}</AniLink></h3>
+                                    <h3 className="h-title h1-title text-white">
+                                        <Link to={`/recettes/${categorie.slug}`} >{categorie.titre}</Link>
+                                    </h3>
                                 </BackgroundImage>
                             </div>
                         ))}

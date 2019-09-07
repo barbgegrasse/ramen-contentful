@@ -32,7 +32,7 @@ const Layout = ({ children, location }) => (
                 <div className="front main-container">
                     <div className="central-container">
                         <main>
-                            <Transition location={location}>
+                            <Transition location={location} >
                                 {children}
                             </Transition>
                         </main>

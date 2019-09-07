@@ -1,9 +1,10 @@
 import React, {Component} from "react"
-import { Link  } from 'gatsby'
-import TransitionLink from "gatsby-plugin-transition-link"
-import { TransitionState } from "gatsby-plugin-transition-link";
 
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+//import TransitionLink from "gatsby-plugin-transition-link"
+//import { TransitionState } from "gatsby-plugin-transition-link";
+
+//import AniLink from "gatsby-plugin-transition-link/AniLink";
+import { Link } from "gatsby"
 import Logo from '../images/Logo'
 
 
@@ -58,19 +59,19 @@ class LeftNav extends Component {
                     </div>
                     <nav id="main-nav" className="main-nav" role="navigation">
 
-                        <AniLink fade to="/">
+                        <Link fade to="/">
                             <Logo />
-                        </AniLink>
-                        <ul class="list">
-                            <li class="list-item">
-                                <AniLink getProps={isActive} {...this.props} fade to="/">
+                        </Link>
+                        <ul className="list">
+                            <li className="list-item">
+                                <Link getProps={isActive} {...this.props} fade to="/">
                                     Accueil
-                                </AniLink>
+                                </Link>
                             </li>
-                            <li class="list-item">
-                                <AniLink getProps={isPartiallyActive} {...this.props}    to="/recettes">
-                                   Recettes de porc
-                                </AniLink>
+                            <li className="list-item">
+                                <Link getProps={isPartiallyActive} {...this.props} to="/recettes">
+                                   Recettes
+                                </Link>
                             </li>
                         </ul>
                     </nav>
