@@ -40,7 +40,7 @@ class IndexPage extends React.Component {
                         <div className="col-12">
                             <h2 className="h-title h1-title">Que trouve t-on dans un bol de ramen ?</h2>
                             <p class="mt-4">Un bon bol de ramen se compose de 4 éléments clés. Ex non qui sint exercitation in consequat nostrud dolor amet consectetur culpa labore sit duis. Est eiusmod do ad officia labore ea ullamco elit ullamco do. Cupidatat elit in adipisicing exercitation cupidatat. Id cupidatat qui labore aute dolore duis culpa. Magna laborum est laborum velit labore occaecat excepteur ullamco culpa dolor sunt sint occaecat. Id in esse qui esse est elit quis deserunt ea ad ea sunt. Reprehenderit elit nisi est enim duis culpa sint qui et cillum esse commodo.</p>
-
+                            <p>Do occaecat amet sint duis voluptate sit ullamco occaecat eiusmod commodo pariatur laboris fugiat sit. Consequat elit ex irure id magna nisi eiusmod non esse non reprehenderit dolor culpa anim. Elit dolore minim pariatur reprehenderit duis ad magna tempor ut aliqua qui.</p>
                             <p>Do occaecat amet sint duis voluptate sit ullamco occaecat eiusmod commodo pariatur laboris fugiat sit. Consequat elit ex irure id magna nisi eiusmod non esse non reprehenderit dolor culpa anim. Elit dolore minim pariatur reprehenderit duis ad magna tempor ut aliqua qui.</p>
                         </div>
                     </div>
