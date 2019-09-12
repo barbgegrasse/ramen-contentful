@@ -8,22 +8,10 @@ import SEO from "../components/seo"
 
 class BlogPostTemplate extends React.Component {
     render() {
-        var contentful = require('contentful')
-        var client = contentful.createClient({
-            space: 'uxkgpi34s8wc',
-            accessToken: 'GPxSXJqBexyE2gkMztBod0VNt4cSqhI81CE3LJBiPaQ'
-        })
-
         const post = this.props.data.contentfulArticle
-
         //const siteTitle = this.props.data.site.siteMetadata.title
         //const { previous, next } = this.props.pageContext
-        //console.log(post)
-        const Bold = ({ children }) => <span className="bold">{children}</span>
         const Text = ({ children }) => <p className="align-center">{children}</p>
-        let intermediaire = "";
-        let paragraph = ""
-        let htmlObject = document.createElement('div');
 
         const options = {
             renderNode: {
@@ -40,7 +28,6 @@ class BlogPostTemplate extends React.Component {
                                     <img className="illu-section" src={fields.image['fr-FR'].fields.file['fr-FR'].url+'?w=700'} />
                                 </div>
                                 <div className="col-6">
-                                    
                                     {documentToReactComponents(fields.texteADroite['fr-FR'])}
                                 </div>
                             </div>
@@ -101,41 +88,41 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-    contentfulArticle(slug: { eq: $slug }) {
-        titre
-        tempsDePreparation
-        banniere {
-          fluid(quality: 100, maxWidth: 1610, maxHeight: 620) {
-            base64
-            tracedSVG
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
-          }
+    query BlogPostBySlug($slug: String!) {
+        site {
+            siteMetadata {
+                title
+                author
+            }
         }
-        description{
-            json
-        }
-        ingredients{
-            json
-        }
-        citation{
-            citation
-        }
-        related {
+        contentfulArticle(slug: { eq: $slug }) {
             titre
-            descriptionCourte
+            tempsDePreparation
+            banniere {
+                fluid(quality: 100, maxWidth: 1610, maxHeight: 620) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+                }
+            }
+            description{
+                json
+            }
+            ingredients{
+                json
+            }
+            citation{
+                citation
+            }
+            related {
+                titre
+                descriptionCourte
+            }
         }
     }
-  }
 `
