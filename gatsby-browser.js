@@ -1,5 +1,7 @@
 require('typeface-bangers');
 require('typeface-patrick-hand-sc');
+require('typeface-cardo');
+require('typeface-montserrat-alternates');
 require("./src/css/stylesheet.css");
 // ES5 way
 // exports.onClientEntry = () => {

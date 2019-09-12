@@ -22,19 +22,62 @@
 }
 
 .presentation-recette {
+    padding: 30px 40px;
     background-color: #FFF;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+    border-radius: .25rem;
+    ul {
+        padding-left: 0px;
+        font-family: Cardo, serif;
+        list-style: none;
+        p{margin: 0;}
+    }
 }
 
 .main-citation {
     position: absolute;
-    height: 50%;
-    bottom: 0;
-    margin-bottom: 0;
     display: flex;
     align-items: center;
+    transform: translateX(50%);
+    bottom: 0;
+    height: 50%;
+    margin-bottom: 0;
     max-width: 470px;
     text-align: center;
-    transform: translateX(50%);
+    font-family: Cardo, serif;
+    font-size: 30px;
+    color: #52473b;
+}
+
+.titre-recette{
+    font-size: 60px;
+    text-transform: uppercase;
+    color: $primary-color;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.sous-titre-recette{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.description-longue{
+    padding-top: 80px;
+}
+
+.guillemets{
+    position: relative;
+    quotes: "\201C""\201D""\2018""\2019";
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    background: #f9f9f9;
+    &:before{content:open-quote; display: block; position: absolute; top:  -41px; left: -24px; font-size: 82px;  font-weight: 900; font-family:  'Montserrat Alternates', sans-serif; color:red;}
+    &:after{ content:close-quote; display: block; position: absolute; right: -21px; bottom: -72px; font-size: 82px; font-weight: 900; font-family:  'Montserrat Alternates', sans-serif; color:red;}
+}
+
+.illu-section{
+    height: 100%;
+    object-fit: cover;
 }
 
 /* MAIN CONTENT*/

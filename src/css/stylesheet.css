@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -422,7 +423,7 @@ template {
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: red;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -540,12 +541,12 @@ sup {
   top: -.5em; }
 
 a {
-  color: #007bff;
+  color: red;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: #0056b3;
+    color: #b30000;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -1610,12 +1611,12 @@ template {
       width: 100%; } }
 
 .bg-primary {
-  background-color: #007bff !important; }
+  background-color: red !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #0062cc !important; }
+  background-color: #cc0000 !important; }
 
 .bg-secondary {
   background-color: #6c757d !important; }
@@ -3677,10 +3678,10 @@ button.bg-dark:focus {
   color: #fff !important; }
 
 .text-primary {
-  color: #007bff !important; }
+  color: red !important; }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #0062cc !important; }
+  color: #cc0000 !important; }
 
 .text-secondary {
   color: #6c757d !important; }
@@ -3758,7 +3759,7 @@ a {
   color: #e50050;
   text-decoration: none; }
   a:hover, a:active, a:focus {
-    color: #222222;
+    color: #191c36;
     text-decoration: underline; }
 
 /**
@@ -3772,8 +3773,14 @@ img {
  * Basic typography style for copy text
  */
 body {
-  color: #222222;
+  color: #191c36;
   font: normal 125%/1.4 "Montserrat", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
+
+/**
+ * weight
+ */
+.bold {
+  font-weight: 700; }
 
 /**
  * HEADER
@@ -3830,7 +3837,7 @@ a {
  * 3. Leave some space on the edges, especially valuable on small screens
  */
 .container {
-  max-width: 1440px;
+  max-width: 1280px;
   /* 1 */
   margin-left: auto;
   /* 2 */
@@ -3871,9 +3878,9 @@ a {
   width: 1px; }
 
 /**
- * 
+ *
  * Spacing
- * 
+ *
  */
 .space40 {
   margin-top: 20px; }
@@ -4037,18 +4044,74 @@ body {
   padding-top: 200px; }
 
 .presentation-recette {
-  background-color: #FFF; }
+  padding: 30px 40px;
+  background-color: #FFF;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  border-radius: .25rem; }
+  .presentation-recette ul {
+    padding-left: 0px;
+    font-family: Cardo, serif;
+    list-style: none; }
+    .presentation-recette ul p {
+      margin: 0; }
 
 .main-citation {
   position: absolute;
-  height: 50%;
-  bottom: 0;
-  margin-bottom: 0;
   display: flex;
   align-items: center;
+  transform: translateX(50%);
+  bottom: 0;
+  height: 50%;
+  margin-bottom: 0;
   max-width: 470px;
   text-align: center;
-  transform: translateX(50%); }
+  font-family: Cardo, serif;
+  font-size: 30px;
+  color: #52473b; }
+
+.titre-recette {
+  font-size: 60px;
+  text-transform: uppercase;
+  color: red;
+  border-bottom: 1px solid #F5F5F5; }
+
+.sous-titre-recette {
+  font-size: 24px;
+  font-weight: 700; }
+
+.description-longue {
+  padding-top: 80px; }
+
+.guillemets {
+  position: relative;
+  quotes: "“" "”" "‘" "’";
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  background: #f9f9f9; }
+  .guillemets:before {
+    content: open-quote;
+    display: block;
+    position: absolute;
+    top: -41px;
+    left: -24px;
+    font-size: 82px;
+    font-weight: 900;
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: red; }
+  .guillemets:after {
+    content: close-quote;
+    display: block;
+    position: absolute;
+    right: -21px;
+    bottom: -72px;
+    font-size: 82px;
+    font-weight: 900;
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: red; }
+
+.illu-section {
+  height: 100%;
+  object-fit: cover; }
 
 /* MAIN CONTENT*/
 

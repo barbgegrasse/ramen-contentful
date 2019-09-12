@@ -5,6 +5,12 @@ body {
   color: $text-color;
   font: normal 125% / 1.4 $text-font-stack;
 }
+
+/**
+ * weight
+ */
+.bold{font-weight: 700;}
+
 /**
  * HEADER
  */
@@ -24,11 +30,10 @@ body {
     font-size: 23px;
     color: #060841;
 }
+
 /**
  * TITRE
  */
-
-
 .h-title{
     background: red;
     color : #FFF;

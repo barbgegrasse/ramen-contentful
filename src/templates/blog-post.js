@@ -1,88 +1,97 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { BLOCKS } from '@contentful/rich-text-types';
 import BackgroundImage from 'gatsby-background-image'
 //import lazyCss from "../vendor/lazycss"
 import SEO from "../components/seo"
 
 class BlogPostTemplate extends React.Component {
     render() {
+        var contentful = require('contentful')
+        var client = contentful.createClient({
+            space: 'uxkgpi34s8wc',
+            accessToken: 'GPxSXJqBexyE2gkMztBod0VNt4cSqhI81CE3LJBiPaQ'
+        })
 
         const post = this.props.data.contentfulArticle
-        const siteTitle = this.props.data.site.siteMetadata.title
+
+        //const siteTitle = this.props.data.site.siteMetadata.title
         //const { previous, next } = this.props.pageContext
         //console.log(post)
+        const Bold = ({ children }) => <span className="bold">{children}</span>
+        const Text = ({ children }) => <p className="align-center">{children}</p>
+        let intermediaire = "";
+        let paragraph = ""
+        let htmlObject = document.createElement('div');
+
+        const options = {
+            renderNode: {
+                [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+                [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+
+                    const fields = node.data.target.fields;
+                    //console.log(fields)
+                    //console.log(fields.image['fr-FR'].fields.file['fr-FR'].url);
+                    switch (node.data.target.sys.contentType.sys.id) {
+                        case "sectionImageText":
+                            return <div className="row">
+                                <div className="col-6">
+                                    <img className="illu-section" src={fields.image['fr-FR'].fields.file['fr-FR'].url+'?w=700'} />
+                                </div>
+                                <div className="col-6">
+                                    
+                                    {documentToReactComponents(fields.texteADroite['fr-FR'])}
+                                </div>
+                            </div>
+                        default:
+                            return <div>Fallback Element</div>
+                    }
+                }
+            },
+            renderText: text => text.replace('!', '?')
+        }
 
         return (
             <>
                 <SEO
                 title={post.titre}
                 />
-                <div>
-                    <div className="hero_container">
-                        <BackgroundImage
-                            Tag="section"
-                            className="background-hero"
-                            fluid={post.banniere.fluid}
-                            backgroundColor={`#040e18`}
-                        >
-                            
-                        </BackgroundImage>
-                    </div>
-   
-                    <h1>
-                        {post.titre}
-                    </h1>
-
-                    <div className="container detail-recette">
-                        <div className="row">
-                            <div className="col-4 presentation-recette">
-                                <h1 className="text-primary">{post.titre}</h1>
-                                <span className="bold">Ingrédients</span>
-                                <ul>
-                                    <li>1 cup & 2 tbsp white miso</li>
-                                    <li>1/2 cup sea salt</li>
-                                    <li>6 tbsp water</li>
-                                    <li>2 tbsp rice vinegar</li>
-                                    <li>1 tbsp honey</li>
-                                    <li>1 tbsp mirin</li>
-                                    <li>12 roasted ripe cherry tomatoes</li>
-                                    <li>3 roasted garlic heads</li>
-                                    <li>2.5 tsp MSG</li>
-                                    <li>1 tsp white pepper</li>
-                                    <li>1 tsp Chinese 5 spice</li>
-                                    <li>2 tsp smoked paprika</li>
-                                    <li>6 tbsp tahini</li>
-                                    <li>1/4 cup of sesame oil</li>
-                                    <li>1 tbsp dried shiitake powder</li>
-                                </ul>
-                                <p><span className="bold">Temps de préparation</span> : 30min</p>
+                <div className="hero_container">
+                    <BackgroundImage
+                        Tag="section"
+                        className="background-hero"
+                        fluid={post.banniere.fluid}
+                        backgroundColor={`#040e18`}
+                    >
+                    </BackgroundImage>
+                </div>
+                <h1>
+                    {post.titre}
+                </h1>
+                <div id="test"></div>
+                <div className="container detail-recette">
+                    <div className="row">
+                        <div className="col-5 presentation-recette">
+                            <h1 className="titre-recette">{post.titre}</h1>
+                            <h2 className="sous-titre-recette">Ingrédients</h2>
+                            {documentToReactComponents(post.ingredients.json)}
+                            <p><span className="bold">Temps de préparation</span> : {post.tempsDePreparation}</p>
+                        </div>
+                        <div className="col-7">
+                            <div class="main-citation">
+                                <blockquote className="guillemets">
+                                    {post.citation.citation}
+                                </blockquote>
                             </div>
-                            <div className="col-8">
-                                <p class="main-citation">Something that will enhance the pork flavor because for me tonkotsu is all about the pork</p>
+                        </div>
+                        <div className="row description-longue">
+                            <div className="col-12">
+                                <h2>Réalisation de la recette</h2>
+                                {documentToReactComponents(post.description.json, options)}
                             </div>
                         </div>
                     </div>
-  
-                    Nostrud eiusmod cillum mollit ipsum veniam. Ullamco qui elit id exercitation id est qui do do nulla qui. Est id laboris ea aliquip.
-
-Anim aliquip pariatur adipisicing magna occaecat esse. Nostrud id culpa eu do do ex et anim. Irure dolore occaecat nulla est nulla proident sit est anim veniam ipsum est in eu. Incididunt qui cillum amet fugiat sunt nisi dolore pariatur culpa sint velit excepteur. Do aute velit reprehenderit ut excepteur aliqua enim ut proident ut ut.
-
-Qui consequat irure aute quis ullamco qui velit esse occaecat ea. Consequat pariatur ad Lorem adipisicing Lorem ullamco. Labore eu ullamco sint nisi officia. Minim aute enim amet exercitation nisi consequat aliqua consequat amet.
-
-Occaecat labore consequat occaecat sint irure amet ea sunt do esse est elit sint. Officia adipisicing ad laborum sunt sunt minim nulla. Aute sit nisi laborum id exercitation. Elit fugiat nostrud in cillum mollit mollit aliqua Lorem esse ea laboris sit deserunt. Cillum cupidatat tempor labore do aliqua commodo sit nulla sint nostrud nostrud aliquip. Veniam esse nulla ipsum proident. Quis excepteur irure magna sint et mollit Lorem.
-
-Ipsum ad nulla eu officia. Aliqua laboris irure tempor magna proident laborum. Commodo ullamco ullamco ipsum do labore duis labore Lorem sit aute excepteur ea. Est ex occaecat laboris nostrud. Nulla Lorem eu cupidatat nisi est exercitation voluptate et nostrud ut ea est. Ex pariatur eiusmod esse magna laborum.
-
-Cillum amet sit ea veniam nostrud proident. Sint labore reprehenderit excepteur id. Lorem sunt est non aliqua incididunt exercitation cupidatat sunt. Duis ullamco quis culpa commodo laborum labore ipsum cupidatat proident enim dolore ea. Reprehenderit pariatur est ea incididunt tempor adipisicing ut fugiat id exercitation sunt. Quis qui Lorem dolore dolor. Incididunt nostrud veniam proident aliqua sunt laboris sint.
-
-Non consequat eu do laborum qui anim dolor veniam quis consequat occaecat in dolore. Officia ex esse nulla sint et adipisicing irure eu. Aliqua amet nulla ad Lorem sunt adipisicing excepteur voluptate magna. Sit ipsum ea do voluptate consequat duis exercitation laborum non. Laboris excepteur tempor nostrud ad exercitation pariatur sit elit ad ex cupidatat qui officia est. Dolor irure nisi nisi mollit occaecat amet voluptate minim duis non esse consectetur.
-
-Minim pariatur sint Lorem deserunt est sint amet aliqua veniam quis. Exercitation commodo ipsum irure sit. Incididunt aliqua qui est excepteur culpa eu.
-
-Est dolor eu duis voluptate. Non quis aute ullamco officia laboris pariatur. Ad nostrud et culpa minim ullamco laborum elit exercitation.
-
-Dolor minim velit exercitation pariatur aliqua enim quis. Ex do cillum veniam non enim est consectetur in velit quis esse eu deserunt. Pariatur velit minim ipsum velit.
                 </div>
             </>
         )
@@ -101,6 +110,7 @@ export const pageQuery = graphql`
     }
     contentfulArticle(slug: { eq: $slug }) {
         titre
+        tempsDePreparation
         banniere {
           fluid(quality: 100, maxWidth: 1610, maxHeight: 620) {
             base64
@@ -115,6 +125,16 @@ export const pageQuery = graphql`
         }
         description{
             json
+        }
+        ingredients{
+            json
+        }
+        citation{
+            citation
+        }
+        related {
+            titre
+            descriptionCourte
         }
     }
   }

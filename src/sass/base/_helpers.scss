@@ -55,14 +55,14 @@
 }
 
 /**
- * 
+ *
  * Spacing
- * 
+ *
  */
 
-    .space40{
-        margin-top: 20px;
-        @include media-breakpoint-up(md){
-            margin-top:40px;
-        }
+.space40{
+    margin-top: 20px;
+    @include media-breakpoint-up(md){
+        margin-top:40px;
     }
+}
