@@ -35,11 +35,17 @@ class LeftNav extends Component {
     }
 
     close_nav(e){
-        console.log("sert à rien");
+        //console.log("sert à rien");
     }
 
     render(){
-
+    /*
+    {data.allContentfulCategorie.edges.map(categorie => (
+        <Link getProps={isPartiallyActive} {...this.props}  to={`recettes/${categorie.node.slug}`}>
+            {categorie.node.titre}
+        </Link>
+    ))}
+    */
         const isActive = ({ isCurrent }) => {
             return isCurrent ? { className: "active" } : null
         }
@@ -49,6 +55,8 @@ class LeftNav extends Component {
         }) => {
             return isPartiallyCurrent ? { className: "active" } : null
         }
+
+        const { data } = this.props
         return (
             <aside className="sidebar-left">
                 <div className="container-fixed" >
@@ -73,6 +81,7 @@ class LeftNav extends Component {
                                    Recettes
                                 </Link>
                             </li>
+
                         </ul>
                     </nav>
                 </div>
@@ -82,3 +91,16 @@ class LeftNav extends Component {
 }
 
 export default LeftNav;
+
+
+export const pageQuery = graphql`
+    query LeftNavCategories {
+        allContentfulCategorie {
+            nodes {
+                id
+                titre
+                slug
+            }
+        }
+    }
+`

@@ -4114,5 +4114,20 @@ body {
   object-fit: cover; }
 
 /* MAIN CONTENT*/
+.categorie-article {
+  position: absolute;
+  top: 260px;
+  left: -14px;
+  display: inline-block;
+  padding: 5px 13px;
+  transform: matrix(0.99, -0.1, 0, 0.9, 0, 9);
+  background: red;
+  font-weight: 600;
+  color: #FFF;
+  text-transform: uppercase;
+  box-shadow: 5px 5px 15px 5px rgba(255, 0, 0, 0.66); }
+
+.vignette-listing {
+  min-height: 340px; }
 
 /*# sourceMappingURL=stylesheet.css.map */

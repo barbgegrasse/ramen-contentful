@@ -42,7 +42,7 @@ class IndexPage extends React.Component {
                     </div>
                     <div className="row space40 align-items-center mt-4">
                         {categories.map(categorie => (
-                            <div key={categorie.id} className="col-sm-3">
+                            <article key={categorie.id} className="col-sm-3">
                                 <BackgroundImage
                                     Tag="section"
                                     className="clip-polygon"
@@ -53,7 +53,7 @@ class IndexPage extends React.Component {
                                         <Link to={`/recettes/${categorie.slug}`} >{categorie.titre}</Link>
                                     </h3>
                                 </BackgroundImage>
-                            </div>
+                            </article>
                         ))}
                     </div>
                 </section>
@@ -83,7 +83,7 @@ export const pageQuery = graphql`
                     srcSet
                     height
                 }
-                fluid(maxWidth: 10) {
+                fluid {
                     sizes
                     src
                     srcSet

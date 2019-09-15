@@ -12,28 +12,34 @@ class BlogPostTemplate extends React.Component {
         //const siteTitle = this.props.data.site.siteMetadata.title
         //const { previous, next } = this.props.pageContext
         const Text = ({ children }) => <p className="align-center">{children}</p>
-
         const options = {
             renderNode: {
                 [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
                 [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
-
                     const fields = node.data.target.fields;
-                    //console.log(fields)
-                    //console.log(fields.image['fr-FR'].fields.file['fr-FR'].url);
-                    switch (node.data.target.sys.contentType.sys.id) {
-                        case "sectionImageText":
-                            return <div className="row">
-                                <div className="col-6">
-                                    <img className="illu-section" src={fields.image['fr-FR'].fields.file['fr-FR'].url+'?w=700'} />
+                    console.log(node)
+                    if (typeof node.data.target.sys.contentType.sys.id !== 'undefined') {
+                        switch (node.data.target.sys.contentType.sys.id) {
+                            case "sectionImageText":
+                                return <div className="row">
+                                    <div className="col-6">
+                                        <img className="illu-section" src={fields.image['fr-FR'].fields.file['fr-FR'].url+'?w=700'} />
+                                    </div>
+                                    <div className="col-6">
+                                        {documentToReactComponents(fields.texteADroite['fr-FR'])}
+                                    </div>
                                 </div>
-                                <div className="col-6">
-                                    {documentToReactComponents(fields.texteADroite['fr-FR'])}
-                                </div>
-                            </div>
-                        default:
-                            return <div>Fallback Element</div>
+                            default:
+                                return <div>Fallback Element</div>
+                        }
                     }
+                    
+                },
+                [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+                    return <img src={node.data.target.fields.file['fr-FR'].url} alt={node.data.target.fields.title} title={node.data.target.fields.title} />
+                },
+                [BLOCKS.HEADING_3]: (node, children) => {
+                    return <h3 className="h-title h1-title">{node.content[0].value}</h3>
                 }
             },
             renderText: text => text.replace('!', '?')
@@ -66,7 +72,7 @@ class BlogPostTemplate extends React.Component {
                             <p><span className="bold">Temps de préparation</span> : {post.tempsDePreparation}</p>
                         </div>
                         <div className="col-7">
-                            <div class="main-citation">
+                            <div className="main-citation">
                                 <blockquote className="guillemets">
                                     {post.citation.citation}
                                 </blockquote>
