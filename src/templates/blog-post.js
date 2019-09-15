@@ -33,10 +33,9 @@ class BlogPostTemplate extends React.Component {
                                 return <div>Fallback Element</div>
                         }
                     }
-                    
                 },
                 [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
-                    return <img src={node.data.target.fields.file['fr-FR'].url} alt={node.data.target.fields.title} title={node.data.target.fields.title} />
+                    return <div className="image-container"><img src={node.data.target.fields.file['fr-FR'].url} alt={node.data.target.fields.title} title={node.data.target.fields.title} /></div>
                 },
                 [BLOCKS.HEADING_3]: (node, children) => {
                     return <h3 className="h-title h1-title">{node.content[0].value}</h3>

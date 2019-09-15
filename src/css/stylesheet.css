@@ -4012,6 +4012,9 @@ body {
       .main-nav.open .list-item {
         opacity: 1; } }
 
+.image-container {
+  padding: 1.5rem 0 3rem; }
+
 .clip-polygon {
   display: flex;
   align-items: center;
