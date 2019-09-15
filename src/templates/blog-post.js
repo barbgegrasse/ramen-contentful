@@ -106,7 +106,6 @@ export const pageQuery = graphql`
             banniere {
                 fluid(quality: 100, maxWidth: 1610, maxHeight: 620) {
                 base64
-                tracedSVG
                 aspectRatio
                 src
                 srcSet
