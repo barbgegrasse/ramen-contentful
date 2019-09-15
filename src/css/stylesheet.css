@@ -403,6 +403,8 @@ template {
 [hidden] {
   display: none; }
 
+@media (max-width: 1650px) {
+  max-width: 90%; }
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -3849,6 +3851,9 @@ a {
   /* 3 */
   width: 100%;
   /* 1 */ }
+  @media (max-width: 1650px) {
+    .container {
+      max-width: 90%; } }
 
 /**
  * Hide text while making it readable for screen readers
@@ -3894,6 +3899,9 @@ body {
 .main-container {
   padding-left: 380px;
   min-height: 100vh; }
+  @media (max-width: 1650px) {
+    .main-container {
+      padding-left: 20%; } }
   @media (max-width: 991.98px) {
     .main-container {
       padding-left: 0px; } }
@@ -4071,12 +4079,19 @@ body {
   font-family: Cardo, serif;
   font-size: 30px;
   color: #52473b; }
+  @media (max-width: 1650px) {
+    .main-citation {
+      transform: translateX(10%); } }
 
 .titre-recette {
   font-size: 60px;
   text-transform: uppercase;
   color: red;
   border-bottom: 1px solid #F5F5F5; }
+  @media (max-width: 1650px) {
+    .titre-recette {
+      font-size: 45px;
+      line-height: 1.2; } }
 
 .sous-titre-recette {
   font-size: 24px;

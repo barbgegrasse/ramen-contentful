@@ -1,6 +1,9 @@
 //Surchage bootstrap
     //HELPERS
     $max-width: 1280px;
+    @include for-jenny{
+        max-width: 90%;
+    }
 
     //TYPOGRAPHY
     $text-color: #191c36;

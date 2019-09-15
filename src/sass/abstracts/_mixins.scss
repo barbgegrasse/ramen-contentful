@@ -39,3 +39,9 @@
 	-o-transition: $property $duration $ease;
 	transition: $property $duration $ease;
 }
+
+@mixin for-jenny {
+    @media (max-width: 1650px) {
+        @content;
+    }
+}

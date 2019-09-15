@@ -47,6 +47,10 @@
     font-family: Cardo, serif;
     font-size: 30px;
     color: #52473b;
+
+    @include for-jenny{
+        transform: translateX(10%);
+    }
 }
 
 .titre-recette{
@@ -54,6 +58,10 @@
     text-transform: uppercase;
     color: $primary-color;
     border-bottom: 1px solid #F5F5F5;
+    @include for-jenny{
+        font-size: 45px;
+        line-height: 1.2;
+    }
 }
 
 .sous-titre-recette{
