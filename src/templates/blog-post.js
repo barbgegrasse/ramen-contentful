@@ -17,9 +17,9 @@ class BlogPostTemplate extends React.Component {
             const RelatedArticles = this.props.data.contentfulArticle.related.map(function (article, i) {
                 return <ArticleListing sizes={article.image.sizes} titre={article.titre} />
             })
+            return RelatedArticles
         }
-
-        return RelatedArticles
+        return false
      }
 
     render() {
