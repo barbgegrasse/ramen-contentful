@@ -13,8 +13,7 @@ class FormContact extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('Le nom a été soumis : ' + this.state.value);
-        event.preventDefault();
+        console.log(this.stae)
     }
 
     render() {
