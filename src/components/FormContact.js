@@ -18,11 +18,11 @@ class FormContact extends React.Component {
 
     render() {
         return (
-            <form name="contact" method="POST" data-netlify="true">
+            <form name={this.props.formName} method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value={this.props.formName} />
                 <label>
                     Un joli pseudo :
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    <input name="pseudo" type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
                 <label>
                     Message:
