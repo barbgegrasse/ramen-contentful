@@ -120,7 +120,7 @@ class BlogPostTemplate extends React.Component {
                 <section className="container related-articles">
                     <div className="row related">
                         <div className="col-12">
-                            <FormContact />
+                            <FormContact formName={post.titre} />
                         </div>
                     </div>
                 </section>
