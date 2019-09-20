@@ -18,7 +18,7 @@ class FormContact extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form name="contact" method="POST" data-netlify="true">
                 <label>
                     Un joli pseudo :
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
