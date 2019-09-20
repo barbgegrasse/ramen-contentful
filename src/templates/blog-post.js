@@ -13,15 +13,11 @@ import FormContact from "../components/FormContact"
 class BlogPostTemplate extends React.Component {
     display_related() {
         console.log(this.props.data.contentfulArticle.related)
-        /*
-        const RelatedArticles = this.props.data.contentfulArticle.related.map(
-            Article =>
-                <ArticleListing titre={Article.titre}  />
-        )
-        */
-        const RelatedArticles = this.props.data.contentfulArticle.related.map(function (article, i) {
-            return <ArticleListing sizes={article.image.sizes} titre={article.titre} />
-        })
+        if (typeof this.props.data.contentfulArticle.related === 'undefined') {
+            const RelatedArticles = this.props.data.contentfulArticle.related.map(function (article, i) {
+                return <ArticleListing sizes={article.image.sizes} titre={article.titre} />
+            })
+        }
 
         return RelatedArticles
      }
