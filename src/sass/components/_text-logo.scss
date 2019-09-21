@@ -1,0 +1,108 @@
+.master-container{
+    position: relative;
+    height: 90vh;
+    animation: master-container 0.5s ease-in forwards 4s;
+}
+
+.block-logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //animation: move-block-logo 0.5s ease forwards 4s;
+
+    .logo-txt{
+        animation: max-width-logo 0.5s ease forwards 4s;
+    }
+}
+
+.logo-txt{
+    display:block; 
+    animation: fill-anim 0.5s ease forwards 3.5s;
+
+    path:nth-child(1){
+        stroke-dasharray: 393px;
+        stroke-dashoffset: 393px;
+        animation: line-anim 2s ease forwards;
+    }
+    path:nth-child(2){
+        stroke-dasharray: 392px;
+        stroke-dashoffset: 392px;
+        animation: line-anim 2s ease forwards 0.3s;
+    }
+    path:nth-child(3){
+        stroke-dasharray: 561px;
+        stroke-dashoffset: 561px;
+        animation: line-anim 2s ease forwards 0.9s;
+    }
+    path:nth-child(4){
+        stroke-dasharray: 321px;
+        stroke-dashoffset: 321px;
+        animation: line-anim 2s ease forwards 1.2s;
+    }
+    path:nth-child(5){
+        stroke-dasharray: 427px;
+        stroke-dashoffset: 427px;
+        animation: line-anim 2s ease forwards 1.5s;
+    }
+    path:nth-child(6){
+        stroke-dasharray: 427px;
+        stroke-dashoffset: 427px;
+        animation: line-anim 2s ease forwards 1.8s;
+    }
+    path:nth-child(7){
+        stroke-dasharray: 362px;
+        stroke-dashoffset: 362px;
+        animation: line-anim 2s ease forwards 2.1s;
+    }
+    path:nth-child(8){
+        stroke-dasharray: 362px;
+        stroke-dashoffset: 362px;
+        animation: line-anim 2s ease forwards 2.4s;
+    }
+    path:nth-child(9){
+        stroke-dasharray: 393px;
+        stroke-dashoffset: 393px;
+        animation: line-anim 2s ease forwards 2.7s;
+    }
+}
+//Animation logo letter
+@keyframes line-anim{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+//After ending animation filling logo
+@keyframes fill-anim{
+    from{
+        fill: transparent;
+    }
+    to{
+        fill: #ee4749;
+    }
+}
+
+
+
+@keyframes max-width-logo{
+    from{
+        max-width: 1084px;
+        max-height: 196px;
+        fill: transparent;
+        
+    }
+    to {
+        max-width: 540px;
+        max-height: 98px;
+        fill: #ee4749;
+    }
+}
+
+@keyframes master-container{
+    from{
+        height: 90vh;
+    }
+    to{
+        height: 200px;
+    }
+}

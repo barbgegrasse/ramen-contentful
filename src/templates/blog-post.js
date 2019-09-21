@@ -35,7 +35,7 @@ class BlogPostTemplate extends React.Component {
                     const fields = node.data.target.fields;
                     if (typeof node.data.target.sys.contentType.sys.id !== 'undefined') {
                         switch (node.data.target.sys.contentType.sys.id) {
-                            case "sectionImageText":    
+                            case "sectionImageText":
                                 //console.log(fields.texteADroite['fr-FR'].content[0].data.target.fields.titre['fr-FR'])
                                 return <div className="row section-image-text">
                                     <div className="col-6 col-illu">
