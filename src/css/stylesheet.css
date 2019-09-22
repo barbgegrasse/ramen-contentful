@@ -3905,8 +3905,7 @@ body {
 .main-container {
   /* remove left bar */
   padding-left: 0px;
-  min-height: 100vh;
-  animation: padding-nav 0.5s ease forwards 4.5s; }
+  min-height: 100vh; }
   @media (max-width: 1650px) {
     .main-container {
       padding-left: 20%; } }
@@ -3915,8 +3914,8 @@ body {
       padding-left: 0px; } }
 
 .sidebar-left {
-  opacity: 0;
-  animation: reveal-nav 0.5s ease forwards 4.5s; }
+  display: none;
+  opacity: 0; }
   @media (max-width: 991.98px) {
     .sidebar-left {
       display: block; } }
@@ -4116,6 +4115,17 @@ body {
     height: 90vh; }
   to {
     height: 200px; } }
+/* index2 */
+.lanterne {
+  transform: scale(1.1);
+  animation: animate-lanterne 10s linear forwards 0s;
+  object-fit: cover; }
+
+@keyframes animate-lanterne {
+  from {
+    transform: scale(1.1); }
+  to {
+    transform: scale(1); } }
 .form-comment {
   width: 100%;
   max-width: 980px;

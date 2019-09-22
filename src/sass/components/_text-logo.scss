@@ -106,3 +106,21 @@
         height: 200px;
     }
 }
+
+
+
+/* index2 */
+.lanterne{
+    transform: scale(1.1);
+    animation: animate-lanterne 10s linear forwards 0s;
+    object-fit: cover;
+}
+
+@keyframes animate-lanterne{
+    from{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1.0);
+    }
+}
