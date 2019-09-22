@@ -62,7 +62,7 @@ const SectionWipes2 = () => (
     <Controller>
       <Scene
         triggerHook="0"
-        duration="300%"
+        duration="100%"
         pin
       >
         <Timeline
@@ -70,28 +70,19 @@ const SectionWipes2 = () => (
         >
           <section className="panel blue"><Lanterne /></section>
           <Tween
-            easing={easeCubicInOut}
+            staggerTo={0.1}
+            duration={1}
+            ease="Back.easeInOut"
             from={{ x: '-100%' }}
             to={{ x: '0%' }}
           >
             <section className="panel turqoise"><span>Panel turquoise</span></section>
           </Tween>
+         
           <Tween
-            easing={easeCubicInOut}
-            from={{ x: '100%' }}
-            to={{ x: '0%' }}
-          >
-            <section className="panel green"><span>Panel green</span></section>
-          </Tween>
-          <Tween
-            easing={easeCubicInOut}
-            from={{ y: '-100%' }}
-            to={{ y: '0%' }}
-          >
-            <section className="panel bordeaux"><span>Panel bordeaux</span></section>
-          </Tween>
-          <Tween
-            easing={easeCubicInOut}
+            duration={2}
+            stagger={0.5}
+            ease="Back.easeInOut"
             from={{ x: '-100%' }}
             to={{ x: '0%' }}
           >
@@ -99,7 +90,9 @@ const SectionWipes2 = () => (
 
           </Tween>
           <Tween
-            easing={easeCubicInOut}
+            duration={2}
+            stagger={0.5}
+            ease="Back.easeInOut"
             from={{ x: '100%' }}
             to={{ x: '0%' }}
           >
