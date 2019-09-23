@@ -45,13 +45,17 @@
     }
 }
 
-.active .panel.right {
+.active.panel.right {
     animation: anim-right  0.5s ease forwards 0.5s;
 }
 
-.active .panel.left {
+.active.panel.left {
     animation: anim-left  0.5s ease forwards 0.5s;
 }
+.active.panel.left + .panel.right  {
+    animation: anim-right  0.5s ease forwards 0.5s;
+}
+
 
 @keyframes anim-right {
     from{
