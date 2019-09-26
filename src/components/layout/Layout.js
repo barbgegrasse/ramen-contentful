@@ -7,6 +7,9 @@ import Transition from './Transition'
 
 
 const Layout = ({ children, location }) => (
+    /*
+        <LeftNav />
+    */
     <StaticQuery
         query={graphql`
             query SiteTitleQuery {
@@ -38,7 +41,7 @@ const Layout = ({ children, location }) => (
                         </main>
                     </div>
                 </div>
-                <LeftNav />
+        
             </>
         )}
     />

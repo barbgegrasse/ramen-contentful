@@ -12,6 +12,8 @@ import Fade from 'react-reveal/Fade';
 
 
 class IndexPage extends React.Component {
+
+
     componentDidMount(){
         const logo = document.querySelectorAll("#logo-txt path");
         console.log(logo);
@@ -21,6 +23,7 @@ class IndexPage extends React.Component {
     }
 
  	render() {
+         
 /*
                <section className="container">
                     <div className="row space40 align-items-center">

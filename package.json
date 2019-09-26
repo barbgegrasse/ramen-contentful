@@ -10,6 +10,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^13.4.0",
+    "@elsdoerfer/react-arrow": "^1.0.3",
     "@fullpage/react-fullpage": "^0.1.16",
     "d3-ease": "^1.0.5",
     "gatsby": "^2.13.73",
