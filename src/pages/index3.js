@@ -48,17 +48,22 @@ class Index3 extends Component {
         .addPause().addLabel('two')
         //.to('.intro h1',0.5,{y:65},'two')
         .to('#elem01', 2, { scale: 1.1, ease: Power1.easeOut }, 'two')
-        .to('.intro02',0.6,{xPercent:-100,ease: Power1.easeOut},'two') 
+        .to('#intro02',0.6,{xPercent:-100,ease: Power1.easeOut},'two') 
         .to('.intro01',0.6,{xPercent:200,ease: Power1.easeOut},'two') //On bouge le premier panel de gauche
         .to('.elemRight03a',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite supérieur
         .to('.intro03',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite inférieur
         .to('#questionContainer .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
-        .to('#reponseContainer .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
+        .to('#reponseContainer .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa reponse
 
         .addPause().addLabel('three')
         .to('.elemRight03a',0.5,{xPercent:-200  ,ease: Power1.easeOut},'three')
-        .to('.intro01'  ,0.5,{xPercent: 100  ,ease: Power1.easeOut},'three') //On Retire en meme temps le premier panel Ramen
+        .to('.intro01'     ,0.5,{xPercent: 100  ,ease: Power1.easeOut},'three') //On Retire en meme temps le premier panel Ramen
         .to('.bouillon'    ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three')//animation du panel bouillon
+        .to('#intro02'     ,0.5,{xPercent:-200  ,ease: Power1.easeOut},'three') //On dégage le panel question reponse
+        .to('#bouillonTxt' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three') //On Fait apparaitre notre texte sur le bouillon
+        .to('#titreBouillon .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
+        .to('#descBouillon .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa reponse
+        
 
         //.to("#detailReponse", 0.5, {text:"tare", ease:Linear.easeNone})//Changement du texte
         .addPause().addLabel('bouillon')
@@ -74,7 +79,6 @@ class Index3 extends Component {
 			//Normalize event wheel delta
 			//var delta = e.originalEvent.wheelDelta / 30 || -e.originalEvent.detail;
 			const delta = e.wheelDelta / 30 || -e.detail
-			console.log(delta)
 			if(!action.isActive() && delta < -1)
 			{
 				console.log(action.currentLabel)
@@ -110,7 +114,7 @@ class Index3 extends Component {
                     <div className="block-logo-txt">
                         <div className="top-logo" id="upperWrap">
                             <p id="upper" className="title-site">
-                                <span className="hide-logo"> Ramen  Noob</span>
+                                <span className="hide-logo"> Ramen &nbsp; Noob</span>
                             </p>
                         </div>
                         <div className="line-logo" id="line"></div>
@@ -148,7 +152,7 @@ class Index3 extends Component {
                 </div>
                 
      
-				<div className="fromRight intro02">
+				<div id="intro02" className="fromRight intro02">
 					<h1 id="questionContainer" className="question-container">
                         <span className="question">RAMEN</span>
                     </h1>
@@ -175,8 +179,16 @@ class Index3 extends Component {
                     </div>
 				</div>
 
-				<div className="fromLeft nouilles">
-
+				<div id="bouillonTxt" className="fromRight bouillon-txt">
+					<h2 id="titreBouillon" className="question-container">
+                        <span className="question">Bouillon</span>
+                    </h2>
+                    <div id="descBouillon" className="reponse-container">
+                        <p className="reponse">
+                            C'est la base de tout bon bol de ramen. C'est lui qui vous réchauffe le cœur au sens propre comme au figuré. Avec une bonne gorgée d'un bon bouillon, votre corps vous fera exulter de plaisir un bon "Ahhhh~". Le bouillon commence avec des ingrédients de base qui sont souvent composés de poulet, de porc, de fruits de mer et/ou de légumes. <br />
+                            La clé d'un bon bouillon est d'extraire la saveur et le corps des ingrédients.
+                        </p>
+                    </div>
 				</div>
 				
 				<div className="fromTopLeft elemTopLeft04">
