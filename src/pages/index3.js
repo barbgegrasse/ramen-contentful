@@ -106,7 +106,6 @@ class Index3 extends Component {
                         </div>
                     </div>
                 </div>
-
                 <div id="main-nav" className="main-nav">
                     <div className="block-logo-txt">
                         <div className="top-logo" id="upperWrap">
@@ -143,8 +142,9 @@ class Index3 extends Component {
 
 
                 <BackgroundIntro00 />
+
                 <div className="fromLeft intro01">
-                <BackgroundIntro01 />
+                {/*<BackgroundIntro01 />*/}
                 </div>
                 
      

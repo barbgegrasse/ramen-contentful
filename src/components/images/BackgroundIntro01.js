@@ -29,8 +29,8 @@ const BackgroundIntro01 = () => {
     query {
         placeholderImage: file(relativePath: { eq: "ramen-women.jpg" }) {
           childImageSharp {
-            fluid(quality: 70, maxWidth: 960) {
-              ...GatsbyImageSharpFluid_withWebp
+            fluid(quality: 90, maxWidth: 960) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
