@@ -15,10 +15,10 @@ import BackgroundImage from 'gatsby-background-image'
 /*
 
 */
-const BackgroundIntro01 = () => {
+const BackgroundIntro00 = () => {
     const data = useStaticQuery(graphql`
     query {
-        placeholderImage: file(relativePath: { eq: "ramen-women.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "ramen-home2.jpg" }) {
             childImageSharp {
                 fluid(maxWidth: 685) {
                 ...GatsbyImageSharpFluid
@@ -28,7 +28,7 @@ const BackgroundIntro01 = () => {
     }
     `)
 
-    return <BackgroundImage id="" Tag="div" fluid={data.placeholderImage.childImageSharp.fluid}  backgroundColor={`#000`} > </BackgroundImage>
+    return <BackgroundImage id="wrap" Tag="div" className="wrap addbg" fluid={data.placeholderImage.childImageSharp.fluid}  backgroundColor={`#000`} > </BackgroundImage>
 }
 
-export default BackgroundIntro01
+export default BackgroundIntro00

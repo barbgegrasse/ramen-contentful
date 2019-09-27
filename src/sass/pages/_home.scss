@@ -193,6 +193,11 @@ body, p {
 .intro01{
   background-image:url(../images/ramen-women.jpg);
   background-size: cover;
+  .gatsby-image-wrapper{
+      width: 100%;
+      height: 100%;
+  }
+
 }
 .elemRight03a{
   z-index:-1;

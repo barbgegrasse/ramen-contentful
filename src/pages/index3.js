@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import { TweenLite, Timeline, Linear, TweenMax, TimelineMax, Power1, Power0, Bounce } from "gsap";
 import RamenNoobTxt from '../components/images/RamenNoobTxt.js'
 import AniLink from "gatsby-plugin-transition-link/AniLink";
+import BackgroundIntro00 from '../components/images/BackgroundIntro00.js'
 import BackgroundIntro01 from '../components/images/BackgroundIntro01.js'
 
 
@@ -18,10 +19,11 @@ class Index3 extends Component {
 
         const action = new TimelineMax()
 		//.to('#logo-txt',4.5,{opacity:0})
-		.set('#logo-txt', {className:"+=anim-logo"} )//On déclenche l'anim du logo
-        .staggerFrom("#logo-txt", 4.3, {top:"+=0", opacity:1}, 4.3)
-        .to('#logo-txt',0.5,{opacity:0, ease: Power1.easeInOut})
-        .to('#wrapper-logo',0.5,{opacity:0, ease: Power1.easeInOut})//
+		.set('#logo-txt', {className:"+=anim-logo"} ) //On déclenche l'anim du logo
+        .staggerFrom("#logo-txt", 4.3, {top:"+=0", opacity:1}, 4.3) //On attend 4.3 sec que l'anim se fasse
+        .to('#logo-txt',0.5,{opacity:0, ease: Power1.easeInOut}) // On réduit l'opacité du logo
+        .to('#wrapper-logo',0.5,{opacity:0, ease: Power1.easeInOut}) //On réduit l'opacité du conteneur maitre pour laisser apparaitre le premier slide
+        .to('#wrapper-logo',0.5,{display:"none", ease: Power1.easeInOut})
 		//.to('#elem01',0.5,{opacity:0})
         //.to('#elem01',0,{scale:1.03, ease: Power1.easeInOut})
         //Anim logo
@@ -140,13 +142,13 @@ class Index3 extends Component {
                 </div>
 
 
-                <BackgroundIntro01 />
-     
+                <BackgroundIntro00 />
                 <div className="fromLeft intro01">
-                    <div className="lineWrap centered">
-                        
-                    </div>
+                <BackgroundIntro01 />
                 </div>
+                
+     
+                <div className="fromLeft intro01"></div>
 				<div className="fromRight intro02">
 					<h1 id="questionContainer" className="question-container">
                         <span className="question">RAMEN</span>
