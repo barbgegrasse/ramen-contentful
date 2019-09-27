@@ -4746,6 +4746,7 @@ body, p {
 
 .fromCenter {
   position: absolute;
+  top: 0;
   width: 50vw;
   height: 100vh;
   overflow: hidden; }
