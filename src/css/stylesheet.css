@@ -4784,12 +4784,9 @@ body, p {
   height: 100%;
   overflow: hidden; }
 
-.intro01 {
-  background-image: url(../images/ramen-women.jpg);
-  background-size: cover; }
-  .intro01 .gatsby-image-wrapper {
-    width: 100%;
-    height: 100%; }
+.intro01 .gatsby-image-wrapper {
+  width: 100%;
+  height: 100%; }
 
 .elemRight03a {
   z-index: -1; }
