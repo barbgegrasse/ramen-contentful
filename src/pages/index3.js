@@ -165,7 +165,7 @@ class Index3 extends Component {
 
 				
 				<div className="fromRight elemRight03a">
-					<img src="https://unsplash.it/1000/500?image=766"/>
+			
 				</div>
 
 				<div className="fromRight intro03">
