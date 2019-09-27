@@ -148,7 +148,6 @@ class Index3 extends Component {
                 </div>
                 
      
-                <div className="fromLeft intro01"></div>
 				<div className="fromRight intro02">
 					<h1 id="questionContainer" className="question-container">
                         <span className="question">RAMEN</span>

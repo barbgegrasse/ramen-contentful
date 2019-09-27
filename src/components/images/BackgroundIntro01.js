@@ -15,15 +15,24 @@ import BackgroundImage from 'gatsby-background-image'
 /*
 
 */
-const BackgroundIntro01 = () => {
-    const data = useStaticQuery(graphql`
-    query {
+        /*
         placeholderImage: file(relativePath: { eq: "ramen-women.jpg" }) {
             childImageSharp {
                 fluid(maxWidth: 685) {
                 ...GatsbyImageSharpFluid
                 }
             }
+        }
+        */
+const BackgroundIntro01 = () => {
+    const data = useStaticQuery(graphql`
+    query {
+        placeholderImage: file(relativePath: { eq: "ramen-women.jpg" }) {
+          childImageSharp {
+            fluid(quality: 70, maxWidth: 960) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
     }
     `)
