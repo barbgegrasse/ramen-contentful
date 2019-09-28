@@ -1,6 +1,76 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
+
+.go-next{
+    z-index: 100;
+    position: fixed;
+    display: block;
+    width: 50px;
+    height : 50px;
+    bottom: 35px;
+    left: 50%;
+    margin-left: -25px;
+    border-radius: 50%;
+    border: 3px solid #FFF;
+    transform: scale(0);
+    cursor: pointer;
+
+    &:hover{
+        opacity: 0.9;
+        transform: scale(1.2);
+        svg{
+             animation: animate-arrow 0.5s ease-in-out forwards 0s;
+        }
+    }
+}
+
+.go-to-recettes{
+    z-index: 100;
+    position: fixed;
+    display: block;
+    width: 50px;
+    height : 50px;
+    bottom: 35px;
+    top: 50%;
+    margin-top: -25px;
+    right: 35px;
+    
+    border-radius: 50%;
+    border: 3px solid #FFF;
+    transform: rotate(-90deg) scale(0);
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+        transform: rotate(-90deg) scale(1.2);
+        svg{
+             animation: animate-arrow 0.5s ease-in-out forwards 0s;
+        }
+    }
+}
+
+.go-next-container{
+    position: relative;
+    width: 44px; 
+    height: 44px;
+    svg{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+}
+
+@keyframes animate-arrow{
+    from{
+        transform: translate(-50%, -50%) scale(0);
+    }
+    to{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
 .question-container{
     position: relative;
     overflow: hidden;
@@ -36,54 +106,6 @@
         color: #FFF;
     }
 }
-/*
-.kovsky-anim{
-    position: relative;
-    overflow: hidden;
-    display: block;
-    height: 100vh;
-    width: 100vw;
-}
-
-.fp-section{
-    overflow: hidden;
-}
-
-.panel{
-    position: absolute;
-    top: 0;
-
-    &.max {
-        height: 100vh;
-        width: 100vw;
-        background: yellowgreen;
-    }
-
-    &.half-width{
-        height: 100vh;
-        width: 50vw;
-        background: pink;
-        &.left{
-            left:0;
-            pointer-events: auto;
-            overflow: hidden;
-            transform: translate(0, -100vh);
-        }
-        &.right{
-            right:0;
-            pointer-events: auto;
-            overflow: hidden;
-            transform: translate(0, 100vh);
-        }
-    }
-
-    &.half-height{
-        height: 50vh;
-        width: 100vw;
-        background: purple;
-    }
-}
-*/
 
 .intro02{
     background: #671616;
@@ -109,10 +131,6 @@
 */
 .tl-wrapper{
     min-height: 100vh; overflow: hidden;
-}
-
-body, p {
-  overflow:hidden;
 }
 
 .h-title{
@@ -202,24 +220,41 @@ body, p {
 .elemRight03a{
   z-index:-1;
 }
-.intro03{
+
+.intro03 {
   height:50%;
-  background-color:darkgrey;
   bottom: 0;
   top: auto;
   background-image: url(../images/old-man.jpg);
-  background-size:cover;
+  background-size: cover;
+  z-index :10;
 }
-.elemTopLeft04{
-  background:grey;
-}
-.elemBottomRight04{
-  background:grey;
-}
+
 .bouillon{
     background-image: url(../images/bouillon.jpg);
     background-size: cover;
 }
+
 .bouillon-txt{
     background: tomato;
 }
+
+.noodle-txt{
+    background: currentColor;
+    z-index: 20;
+}
+
+.noodle-big-illu {
+    z-index: 15;
+    background-image: url(../images/noodle-big-panel.jpg);
+    background-size: cover;
+}
+
+.noodle-small-illu {
+    z-index: 15;
+    background-image: url(../images/ramen-comptoir.jpg);
+    background-size: cover;
+    top: initial;
+    bottom: 0;
+}
+

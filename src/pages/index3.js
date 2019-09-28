@@ -3,8 +3,6 @@ import { TweenLite, Timeline, Linear, TweenMax, TimelineMax, Power1, Power0, Bou
 import RamenNoobTxt from '../components/images/RamenNoobTxt.js'
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import BackgroundIntro00 from '../components/images/BackgroundIntro00.js'
-import BackgroundIntro01 from '../components/images/BackgroundIntro01.js'
-
 
 
 class Index3 extends Component {
@@ -61,18 +59,18 @@ class Index3 extends Component {
         .to('.bouillon'    ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three')//animation du panel bouillon
         .to('#intro02'     ,0.5,{xPercent:-200  ,ease: Power1.easeOut},'three') //On dégage le panel question reponse
         .to('#bouillonTxt' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three') //On Fait apparaitre notre texte sur le bouillon
-        .to('#titreBouillon .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
-        .to('#descBouillon .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa reponse
+        .to('#titreBouillon .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa question
+        .to('#descBouillon .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa reponse
+
+        .addPause().addLabel('four')//bouillon termidao
+        .to('#bouillonTxt' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On décale le panel bouillon avec le texte
+        .to('#intro03' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On décale le premier panel d'intro avec le M. en bas à droite
+        .to('#BigNoodle' ,0.6,{xPercent:-100  ,ease: Power1.easeOut},'four') //Anime la grande illustration des nouiilles
+        .to('#LittleNoodle' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On anime la team naruto
+        .to('#noodleTxt' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On anime le bloc de texte
+        .to('#titreNoodle .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa question
+        .to('#descNoodle .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa reponse
         
-
-        //.to("#detailReponse", 0.5, {text:"tare", ease:Linear.easeNone})//Changement du texte
-        .addPause().addLabel('bouillon')
-        .to('.nouilles',0.5,{xPercent:200,ease: Power1.easeOut},'bouillon')
-
-        .addPause().addLabel('four')
-        .to('.elemTopLeft04',1,{yPercent:100,ease: Power1.easeInOut}, 'four')
-		.to('.elemBottomRight04',1,{yPercent:-100,ease: Power1.easeInOut}, 'four')
-
 
 		window.addEventListener('wheel', function(e) {
 			console.log(e.detail)
@@ -114,7 +112,7 @@ class Index3 extends Component {
                     <div className="block-logo-txt">
                         <div className="top-logo" id="upperWrap">
                             <p id="upper" className="title-site">
-                                <span className="hide-logo"> Ramen &nbsp; Noob</span>
+                                <span className="hide-logo"> Ramen Noob</span>
                             </p>
                         </div>
                         <div className="line-logo" id="line"></div>
@@ -148,7 +146,7 @@ class Index3 extends Component {
                 <BackgroundIntro00 />
 
                 <div className="fromLeft intro01">
-                {/*<BackgroundIntro01 />*/}
+                
                 </div>
                 
      
@@ -168,12 +166,14 @@ class Index3 extends Component {
 			
 				</div>
 
-				<div className="fromRight intro03">
-					<div className="lineWrap centered">
-						<h1 className=""><span>no</span> 03</h1>
-					</div>
+				<div id="intro03" className="fromRight intro03">
+
 				</div>
 
+                {/*
+                    BOUILLON PART
+                    2 Blocs, Illustration + text
+                */}
 				<div className="fromCenter fullheight">
                     <div id="panel-bouillon" className="item bouillon">
                     </div>
@@ -190,19 +190,25 @@ class Index3 extends Component {
                         </p>
                     </div>
 				</div>
-				
-				<div className="fromTopLeft elemTopLeft04">
-					<div className="lineWrap centered">
-						<h1 className=""><span>no</span></h1>
-					</div>
-				</div>
-				<div className="fromBottomRight elemBottomRight04">
-					<div className="lineWrap centered">
-						<h1 className="">04</h1>
-					</div>
-				</div>
 
-				
+                {/*
+                    NOODLES PART
+                */}
+				<div id="noodleTxt" className="fromRight noodle-txt">
+					<h2 id="titreNoodle" className="question-container">
+                        <span className="question">Nouilles</span>
+                    </h2>
+                    <div id="descNoodle" className="reponse-container">
+                        <p className="reponse">
+                            C'est la base de tout bon bol de ramen. C'est lui qui vous réchauffe le cœur au sens propre comme au figuré. Avec une bonne gorgée d'un bon bouillon, votre corps vous fera exulter de plaisir un bon "Ahhhh~". Le bouillon commence avec des ingrédients de base qui sont souvent composés de poulet, de porc, de fruits de mer et/ou de légumes. <br />
+                            La clé d'un bon bouillon est d'extraire la saveur et le corps des ingrédients.
+                        </p>
+                    </div>
+				</div>
+				<div id="BigNoodle" className="fromRight fullheight noodle-big-illu">
+				</div>
+				<div id="LittleNoodle" className="fromRight noodle-small-illu">
+				</div>						
             </>
         )
     }

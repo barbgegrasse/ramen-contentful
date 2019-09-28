@@ -25,8 +25,7 @@
 
 .main-nav{
     position: fixed;
-    z-index: 10;
-    //top: -50px;
+    z-index: 100;
     left: 0;
     right: 0;
 }
@@ -79,79 +78,6 @@
         }
     }
 }
-
-.go-next{
-    cursor: pointer;
-    position: fixed;
-    display: block;
-    width: 50px;
-    height : 50px;
-    z-index: 10;
-    bottom: 35px;
-    left: 50%;
-    margin-left: -25px;
-    border-radius: 50%;
-    border: 3px solid #FFF;
-    transform: scale(0);
-
-    //@include shift(all,.2s,ease-out);
-    &:hover{
-        opacity: 0.9;
-        transform: scale(1.2);
-        svg{
-             animation: animate-arrow 0.5s ease-in-out forwards 0s;
-        }
-    }
-}
-
-.go-to-recettes{
-    cursor: pointer;
-    position: fixed;
-    display: block;
-    width: 50px;
-    height : 50px;
-    z-index: 10;
-    bottom: 35px;
-    top: 50%;
-    margin-top: -25px;
-    right: 35px;
-    
-    border-radius: 50%;
-    border: 3px solid #FFF;
-    transform: rotate(-90deg) scale(0);
-
-    //@include shift(all,.2s,ease-out);
-    &:hover{
-        opacity: 0.9;
-        transform: rotate(-90deg) scale(1.2);
-        svg{
-             animation: animate-arrow 0.5s ease-in-out forwards 0s;
-        }
-    }
-}
-
-.go-next-container{
-    position: relative;
-    width: 44px; 
-    height: 44px;
-    svg{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        
-    }
-}
-
-@keyframes animate-arrow{
-    from{
-        transform: translate(-50%, -50%) scale(0);
-    }
-    to{
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
 
 /*
 .main-nav{
