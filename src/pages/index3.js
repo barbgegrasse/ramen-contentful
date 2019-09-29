@@ -22,36 +22,28 @@ class Index3 extends Component {
         .to('#logo-txt',0.5,{opacity:0, ease: Power1.easeInOut}) // On réduit l'opacité du logo
         .to('#wrapper-logo',0.5,{opacity:0, ease: Power1.easeInOut}) //On réduit l'opacité du conteneur maitre pour laisser apparaitre le premier slide
         .to('#wrapper-logo',0.5,{display:"none", ease: Power1.easeInOut})
-		//.to('#elem01',0.5,{opacity:0})
-        //.to('#elem01',0,{scale:1.03, ease: Power1.easeInOut})
-        //Anim logo
-        
-
         .set('#elem01', {className:"+=addbg"} )
-        
-        
-		.addLabel('logo')
 
+		.addLabel('logo')
         .to('#main-nav',1,{top:40, ease: Power1.easeOut},'logo')
         .to('#line',0.5,{width:'300px',ease: Power1.easeOut}) //On anime la barre du milieu
         .addLabel('endbar')
 
-        .to('#upper .hide-logo',0.75,{top:0,ease: Power1.easeOut},'endbar') //On affiche la partie supérieur du logo
-        .to('#lower .hide-logo',0.75,{top:0,ease: Power1.easeOut},'endbar') //On affiche la partie inférieur du logo
+        .to('#upper .hide-logo',0.5,{top:0,ease: Power1.easeOut},'endbar') //On affiche la partie supérieur du logo
+        .to('#lower .hide-logo',0.5,{top:0,ease: Power1.easeOut},'endbar') //On affiche la partie inférieur du logo
         .to('#goNext',0.75,{scale:1.3, ease: Bounce.easeOut})//On fais pulser les boutons de nav
         .to('#goRecettes',2,{rotation:-90, scale:1.3, ease: Bounce.easeOut}) //On fait pulser les boutons de nav
 		.to('#elem01',1,{opacity:1, ease: Power1.easeOut},'logo')
 		.to('#elem01',2,{scale:1,ease: Power1.easeOut},'logo')
 
         .addPause().addLabel('two')
-        //.to('.intro h1',0.5,{y:65},'two')
         .to('#elem01', 2, { scale: 1.1, ease: Power1.easeOut }, 'two')
         .to('#intro02',0.6,{xPercent:-100,ease: Power1.easeOut},'two') 
         .to('.intro01',0.6,{xPercent:200,ease: Power1.easeOut},'two') //On bouge le premier panel de gauche
         .to('.elemRight03a',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite supérieur
         .to('.intro03',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite inférieur
-        .to('#questionContainer .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
-        .to('#reponseContainer .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa reponse
+        .to('#titreTileRamen',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
+        .to('#descTileRamen',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa reponse
 
         .addPause().addLabel('three')
         .to('.elemRight03a',0.5,{xPercent:-200  ,ease: Power1.easeOut},'three')
@@ -59,18 +51,35 @@ class Index3 extends Component {
         .to('.bouillon'    ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three')//animation du panel bouillon
         .to('#intro02'     ,0.5,{xPercent:-200  ,ease: Power1.easeOut},'three') //On dégage le panel question reponse
         .to('#bouillonTxt' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three') //On Fait apparaitre notre texte sur le bouillon
-        .to('#titreBouillon .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa question
-        .to('#descBouillon .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa reponse
+        .to('#titreTileBouillon',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa question
+        .to('#descTileBouillon',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa reponse
 
-        .addPause().addLabel('four')//bouillon termidao
+        .addPause().addLabel('four')//bouillon terminado
         .to('#bouillonTxt' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On décale le panel bouillon avec le texte
         .to('#intro03' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On décale le premier panel d'intro avec le M. en bas à droite
         .to('#BigNoodle' ,0.6,{xPercent:-100  ,ease: Power1.easeOut},'four') //Anime la grande illustration des nouiilles
         .to('#LittleNoodle' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On anime la team naruto
         .to('#noodleTxt' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On anime le bloc de texte
-        .to('#titreNoodle .question',1,{top:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa question
-        .to('#descNoodle .reponse',1,{bottom:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa reponse
-        
+        .to('#titreTileNoodle',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa question
+        .to('#descTileNoodle',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa reponse
+
+        .addPause().addLabel('five')//Noodle terminado
+        .to('#tareTxt' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'five') //On anime le bloc de texte
+        .to('#illuTare' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'five') //On anime l'illu de la partie Tare
+        .to('#titreTileTare',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'five') //On anime la partie sup du texte
+        .to('#descTileTare',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'five') //On anime la partie inf du texte
+
+        .addPause().addLabel('six')//Oil terminado
+        .to('#oilTxt' ,0.5,{xPercent:200  ,ease: Power1.easeOut},'six') //On anime le bloc de texte
+        .to('#illuOil' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'six') //On anime l'illu de la partie Tare
+        .to('#titreTileOil', 0.7, { top: 0, opacity: 1, ease: Power1.easeOut }, 'six') //On anime la partie sup du texte
+            .to('#descTileOil', 0.7, { bottom: 0, opacity: 1, ease: Power1.easeOut }, 'six') //On anime la partie inf du texte
+
+        .addPause().addLabel('six')//Garniture terminado
+        .to('#toppingTxt' ,0.5,{yPercent:-100  ,ease: Power1.easeOut},'seven') //On anime le bloc de texte
+        .to('#illuTopping' ,0.5,{yPercent:100  ,ease: Power1.easeOut},'seven') //On anime l'illu de la partie Tare
+        .to('#titreTileTopping', 0.7, { top: 0, opacity: 1, ease: Power1.easeOut }, 'seven') //On anime la partie sup du texte
+        .to('#descTileTopping', 0.7, { bottom: 0, opacity: 1, ease: Power1.easeOut }, 'seven') //On anime la partie inf du texte
 
 		window.addEventListener('wheel', function(e) {
 			console.log(e.detail)
@@ -146,24 +155,23 @@ class Index3 extends Component {
                 <BackgroundIntro00 />
 
                 <div className="fromLeft intro01">
-                
+
                 </div>
-                
-     
-				<div id="intro02" className="fromRight intro02">
-					<h1 id="questionContainer" className="question-container">
-                        <span className="question">RAMEN</span>
+
+				<div id="intro02" className="fromRight tile intro02">
+					<h1 className="titretile-container">
+                        <span id="titreTileRamen" className="titre-tile">Ramen ?</span>
                     </h1>
-                    <div id="reponseContainer" className="reponse-container">
-                        <p className="reponse">
-                            C'est de  l'amour dans un bol, mais c'est surtout la parfaite combinaison de <span className="bold">cinq éléments</span>.
+                    <div className="desctile-container ramen">
+                        <p id="descTileRamen" className="desc-tile">
+                            Ce bol de bonheur, c'est la parfaite combinaison de <span className="bold">cinq éléments</span>.
                         </p>
                     </div>
 				</div>
 
-				
+
 				<div className="fromRight elemRight03a">
-			
+
 				</div>
 
 				<div id="intro03" className="fromRight intro03">
@@ -179,14 +187,14 @@ class Index3 extends Component {
                     </div>
 				</div>
 
-				<div id="bouillonTxt" className="fromRight bouillon-txt">
-					<h2 id="titreBouillon" className="question-container">
-                        <span className="question">Bouillon</span>
-                    </h2>
-                    <div id="descBouillon" className="reponse-container">
-                        <p className="reponse">
-                            C'est la base de tout bon bol de ramen. C'est lui qui vous réchauffe le cœur au sens propre comme au figuré. Avec une bonne gorgée d'un bon bouillon, votre corps vous fera exulter de plaisir un bon "Ahhhh~". Le bouillon commence avec des ingrédients de base qui sont souvent composés de poulet, de porc, de fruits de mer et/ou de légumes. <br />
-                            La clé d'un bon bouillon est d'extraire la saveur et le corps des ingrédients.
+				<div id="bouillonTxt" className="fromRight tile bouillon-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileBouillon" className="titre-tile">Le bouillon</h2>
+                    </div>
+                    <div className="desctile-container noodle">
+                        <p id="descTileBouillon" className="desc-tile">
+                            C'est l'âme de votre bol, il peut-être de porc, de poulet, de poissons ou de légumes. 
+                            <br />C'est l'âme de votre bol
                         </p>
                     </div>
 				</div>
@@ -194,12 +202,12 @@ class Index3 extends Component {
                 {/*
                     NOODLES PART
                 */}
-				<div id="noodleTxt" className="fromRight noodle-txt">
-					<h2 id="titreNoodle" className="question-container">
-                        <span className="question">Nouilles</span>
-                    </h2>
-                    <div id="descNoodle" className="reponse-container">
-                        <p className="reponse">
+				<div id="noodleTxt" className="fromRight tile noodle-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileNoodle" className="titre-tile">Nouilles</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileNoodle" className="desc-noodle desc-tile">
                             C'est la base de tout bon bol de ramen. C'est lui qui vous réchauffe le cœur au sens propre comme au figuré. Avec une bonne gorgée d'un bon bouillon, votre corps vous fera exulter de plaisir un bon "Ahhhh~". Le bouillon commence avec des ingrédients de base qui sont souvent composés de poulet, de porc, de fruits de mer et/ou de légumes. <br />
                             La clé d'un bon bouillon est d'extraire la saveur et le corps des ingrédients.
                         </p>
@@ -208,7 +216,59 @@ class Index3 extends Component {
 				<div id="BigNoodle" className="fromRight fullheight noodle-big-illu">
 				</div>
 				<div id="LittleNoodle" className="fromRight noodle-small-illu">
-				</div>						
+				</div>
+
+                {/*
+                    TARE PART
+                */}
+				<div id="tareTxt" className="fromRight tile bottom tare-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileTare" className="titre-tile">Tare</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileTare" className="desc-tare desc-tile">
+                            Shio, Shoyu, Miso... des mots qui préfixent le nom de votre bol de Ramen dans votre restaurant. Si ce n'est pas le cas fuyez ! <br /> 
+                            Ils constituent la sauce de votre ramen mais aussi la base de l'asaisonement. 
+                        </p>
+                    </div>
+				</div>
+				<div id="illuTare" className="fromRight illu-tare">
+				</div>
+
+                {/*
+                    OIL PART
+                */}
+				<div id="oilTxt" className="fromLeft tile oil-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileOil" className="titre-tile">L'huile</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileOil" className="desc-oil desc-tile">
+                            Shio, Shoyu, Miso... des mots qui préfixent le nom de votre bol de Ramen dans votre restaurant. Si ce n'est pas le cas fuyez ! <br /> 
+                            Ils constituent la sauce de votre ramen mais aussi la base de l'asaisonement. 
+                        </p>
+                    </div>
+				</div>
+				<div id="illuOil" className="fromRight illu-oil fullheight">
+				</div>
+
+
+                {/*
+                    TOPPING PART
+                */}
+				<div id="toppingTxt" className="fromBottomRight tile topping-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileTopping" className="titre-tile">La Garniture</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileTopping" className="desc-topping desc-tile">
+                            Shio, Shoyu, Miso... des mots qui préfixent le nom de votre bol de Ramen dans votre restaurant. Si ce n'est pas le cas fuyez ! <br /> 
+                            Ils constituent la sauce de votre ramen mais aussi la base de l'asaisonement. 
+                        </p>
+                    </div>
+				</div>
+				<div id="illuTopping" className="fromTopLeft illu-topping fullheight">
+				</div>
             </>
         )
     }
