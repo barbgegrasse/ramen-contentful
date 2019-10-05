@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import { TweenLite, Timeline, Linear, TweenMax, TimelineMax, Power1, Power0, Bounce } from "gsap";
+import { TweenLite, Linear, TweenMax, TimelineMax, Power1, Bounce } from "gsap";
 import RamenNoobTxt from '../components/images/RamenNoobTxt.js'
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import BackgroundIntro00 from '../components/images/BackgroundIntro00.js'
@@ -25,7 +25,7 @@ class Index3 extends Component {
         .set('#elem01', {className:"+=addbg"} )
 
 		.addLabel('logo')
-        .to('#main-nav',1,{top:40, ease: Power1.easeOut},'logo')
+        //.to('#main-nav',1,{top:40, ease: Power1.easeOut},'logo')
         .to('#line',0.5,{width:'300px',ease: Power1.easeOut}) //On anime la barre du milieu
         .addLabel('endbar')
 
@@ -34,18 +34,22 @@ class Index3 extends Component {
         .to('#goNext',0.75,{scale:1.3, ease: Bounce.easeOut})//On fais pulser les boutons de nav
         .to('#goRecettes',2,{rotation:-90, scale:1.3, ease: Bounce.easeOut}) //On fait pulser les boutons de nav
 		.to('#elem01',1,{opacity:1, ease: Power1.easeOut},'logo')
-		.to('#elem01',2,{scale:1,ease: Power1.easeOut},'logo')
+        .to('#elem01',2,{scale:1,ease: Power1.easeOut},'logo')
+        
+        
 
         .addPause().addLabel('two')
+        .set("#stepanim",{text:"stopreverse"}) //Pas de retour arriere à partir d'ici
         .to('#elem01', 2, { scale: 1.1, ease: Power1.easeOut }, 'two')
+        .set("#stepanim",{text:"gogogo"})
         .to('#intro02',0.6,{xPercent:-100,ease: Power1.easeOut},'two') 
         .to('.intro01',0.6,{xPercent:200,ease: Power1.easeOut},'two') //On bouge le premier panel de gauche
         .to('.elemRight03a',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite supérieur
         .to('.intro03',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite inférieur
         .to('#titreTileRamen',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
-        .to('#descTileRamen',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa reponse
+        .to('#descTileRamen',0.7,{opacity: 1, ease: Power1.easeOut},"two") //On fait apparaitre la famosa reponse
 
-        .addPause().addLabel('three')
+        .addPause().addLabel('three')//Premier panel terminé
         .to('.elemRight03a',0.5,{xPercent:-200  ,ease: Power1.easeOut},'three')
         .to('.intro01'     ,0.5,{xPercent: 100  ,ease: Power1.easeOut},'three') //On Retire en meme temps le premier panel Ramen
         .to('.bouillon'    ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three')//animation du panel bouillon
@@ -73,7 +77,7 @@ class Index3 extends Component {
         .to('#oilTxt' ,0.5,{xPercent:200  ,ease: Power1.easeOut},'six') //On anime le bloc de texte
         .to('#illuOil' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'six') //On anime l'illu de la partie Tare
         .to('#titreTileOil', 0.7, { top: 0, opacity: 1, ease: Power1.easeOut }, 'six') //On anime la partie sup du texte
-            .to('#descTileOil', 0.7, { bottom: 0, opacity: 1, ease: Power1.easeOut }, 'six') //On anime la partie inf du texte
+        .to('#descTileOil', 0.7, { bottom: 0, opacity: 1, ease: Power1.easeOut }, 'six') //On anime la partie inf du texte
 
         .addPause().addLabel('six')//Garniture terminado
         .to('#toppingTxt' ,0.5,{yPercent:-100  ,ease: Power1.easeOut},'seven') //On anime le bloc de texte
@@ -82,28 +86,26 @@ class Index3 extends Component {
         .to('#descTileTopping', 0.7, { bottom: 0, opacity: 1, ease: Power1.easeOut }, 'seven') //On anime la partie inf du texte
 
 		window.addEventListener('wheel', function(e) {
-			console.log(e.detail)
+			//console.log(e.detail)
 			//Normalize event wheel delta
 			//var delta = e.originalEvent.wheelDelta / 30 || -e.originalEvent.detail;
 			const delta = e.wheelDelta / 30 || -e.detail
 			if(!action.isActive() && delta < -1)
 			{
-				console.log(action.currentLabel)
 				action.play();
 			}
 			else if(!action.isActive() && delta > 1)
 			{
-				console.log(action.currentLabel())
-				action.reverse();
+                const content = document.querySelector("#stepanim").innerHTML;
+				if(content !== "stopreverse"){
+                    action.reverse();
+                }
 			}
-			e.preventDefault();
+			//e.preventDefault();
         })
         
         document.querySelector("#goNext").addEventListener("click", function(){
             action.play();
-        });
-        document.querySelector("#goRecettes").addEventListener("click", function(){
-            action.kill();
         });
     }
 
@@ -117,21 +119,21 @@ class Index3 extends Component {
                         </div>
                     </div>
                 </div>
-                <div id="main-nav" className="main-nav">
-                    <div className="block-logo-txt">
-                        <div className="top-logo" id="upperWrap">
-                            <p id="upper" className="title-site">
-                                <span className="hide-logo"> Ramen Noob</span>
-                            </p>
-                        </div>
-                        <div className="line-logo" id="line"></div>
-                        <div className="bottom-logo" id="lowerWrap">
-                            <blockquote id="lower" className="quote-logo">
-                                <span className="hide-logo">From Ramen Noob to Ramen Lord</span>
-                            </blockquote>
-                        </div>
+
+                <div className="block-logo-txt">
+                    <div className="top-logo" id="upperWrap">
+                        <p id="upper" className="title-site">
+                            <span className="hide-logo"> Ramen Noob</span>
+                        </p>
+                    </div>
+                    <div className="line-logo" id="line"></div>
+                    <div className="bottom-logo" id="lowerWrap">
+                        <blockquote id="lower" className="quote-logo">
+                            <span className="hide-logo">From Ramen Noob to Ramen Lord</span>
+                        </blockquote>
                     </div>
                 </div>
+
 
                 <div id="goNext" className="go-next">
                     <div className="go-next-container">
@@ -159,14 +161,14 @@ class Index3 extends Component {
                 </div>
 
 				<div id="intro02" className="fromRight tile intro02">
-					<h1 className="titretile-container">
-                        <span id="titreTileRamen" className="titre-tile">Ramen ?</span>
-                    </h1>
-                    <div className="desctile-container ramen">
-                        <p id="descTileRamen" className="desc-tile">
-                            Ce bol de bonheur, c'est la parfaite combinaison de <span className="bold">cinq éléments</span>.
-                        </p>
+					<div className="titretile-container">
+                        <h1 id="titreTileRamen" className="titre-tile">Ramen ?</h1>
                     </div>
+                    <p id="descTileRamen" className="desc-tile">
+                        C'est un délicieux plat  d'origine chinoise mais popularisé par les japonais.
+                        Ce bol de bonheur, c'est la parfaite combinaison de <span className="bold">cinq éléments</span>.<br className="d-none d-sm-block" />
+                        Retrouvez ici toutes les recettes pour en maitriser chacun des aspects.
+                    </p>
 				</div>
 
 
@@ -269,6 +271,7 @@ class Index3 extends Component {
 				</div>
 				<div id="illuTopping" className="fromTopLeft illu-topping fullheight">
 				</div>
+                <div id="stepanim" className="d-none"></div>
             </>
         )
     }

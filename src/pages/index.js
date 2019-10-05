@@ -1,171 +1,306 @@
-import React from "react"
-
-import { Link } from "gatsby"
-import BackgroundImage from 'gatsby-background-image'
-
-import SEO from "../components/seo"
-
-import IlluHome from '../components/images/IlluHome.js'
+import React, {Component} from "react"
+import { TweenLite, Linear, TweenMax, TimelineMax, Power1, Bounce } from "gsap";
 import RamenNoobTxt from '../components/images/RamenNoobTxt.js'
-import Zoom from 'react-reveal/Zoom';
-import Fade from 'react-reveal/Fade';
+import AniLink from "gatsby-plugin-transition-link/AniLink";
+import BackgroundIntro00 from '../components/images/BackgroundIntro00.js'
 
 
-class IndexPage extends React.Component {
+
+class Index extends Component {
+   
+    constructor(props) {
+        super(props);
+        this.state = { anotherState: true };
+    }
+
+    gonext(action){
+        action.play();
+    }
 
 
     componentDidMount(){
-        const logo = document.querySelectorAll("#logo-txt path");
-        console.log(logo);
-        for (let i =0; i<logo.length;i++){
-            console.log(`Letter ${i} is ${logo[i].getTotalLength()}`)
+        let timelogo = 4.3
+
+
+        /*
+        const statuAnim = document.querySelector("#anim-home").value
+        let timelogo = 4.3
+        console.log(statuAnim);
+        if(statuAnim == 1){
+            console.log("true");
+            timelogo = 0;
+        }else{
+            console.log("false");
+            timelogo = 4.3;
+            document.querySelector("#anim-home").value = 1
         }
+        console.log("input value "+document.querySelector("#anim-home").value)
+        */
+
+		TweenLite.defaultEase = Linear.easeNone;
+        TweenMax.set(".centered", {xPercent:-50, yPercent:-50});
+
+        const action = new TimelineMax()
+		//.to('#logo-txt',4.5,{opacity:0})
+		//.set('#logo-txt', {className:"+=nope"} ) //On déclenche l'anim du logo
+        .staggerFrom("#logo-txt", 4.3, {top:"+=0", opacity:1}, 4.3) //On attend 4.3 sec que l'anim se fasse
+        .to('#logo-txt',0.5,{opacity:0, ease: Power1.easeInOut}) // On réduit l'opacité du logo
+        .to('#wrapper-logo',0.5,{opacity:0, ease: Power1.easeInOut}) //On réduit l'opacité du conteneur maitre pour laisser apparaitre le premier slide
+        .to('#wrapper-logo',0.5,{display:"none", ease: Power1.easeInOut})
+        .set('#elem01', {className:"+=addbg"} )
+
+		.addLabel('logo')
+        //.to('#main-nav',1,{top:40, ease: Power1.easeOut},'logo')
+        .to('#line',0.5,{width:'300px',ease: Power1.easeOut}) //On anime la barre du milieu
+        .addLabel('endbar')
+
+        .to('#upper .hide-logo',0.5,{top:0,ease: Power1.easeOut},'endbar') //On affiche la partie supérieur du logo
+        .to('#lower .hide-logo',0.5,{top:0,ease: Power1.easeOut},'endbar') //On affiche la partie inférieur du logo
+        .to('#goNext',0.75,{scale:1.3, ease: Bounce.easeOut})//On fais pulser les boutons de nav
+        .to('#goRecettes',2,{rotation:-90, scale:1.3, ease: Bounce.easeOut}) //On fait pulser les boutons de nav
+		.to('#elem01',1,{opacity:1, ease: Power1.easeOut},'logo')
+        .to('#elem01',2,{scale:1,ease: Power1.easeOut},'logo')
+        
+        
+
+        .addPause().addLabel('two')
+        .set("#stepanim",{text:"stopreverse"}) //Pas de retour arriere à partir d'ici
+        .to('#elem01', 2, { scale: 1.1, ease: Power1.easeOut }, 'two')
+        .set("#stepanim",{text:"gogogo"})
+        .to('#intro02',0.6,{xPercent:-100,ease: Power1.easeOut},'two') 
+        .to('.intro01',0.6,{xPercent:200,ease: Power1.easeOut},'two') //On bouge le premier panel de gauche
+        .to('.elemRight03a',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite supérieur
+        .to('.intro03',0.6,{xPercent:-100,ease: Power1.easeOut},'two') //On bouge le panel de droite inférieur
+        .to('#titreTileRamen',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'two') //On fait apparaitre la famosa question
+        .to('#descTileRamen',0.7,{opacity: 1, ease: Power1.easeOut},"two") //On fait apparaitre la famosa reponse
+
+        .addPause().addLabel('three')//Premier panel terminé
+        .to('.elemRight03a',0.5,{xPercent:-200  ,ease: Power1.easeOut},'three')
+        .to('.intro01'     ,0.5,{xPercent: 100  ,ease: Power1.easeOut},'three') //On Retire en meme temps le premier panel Ramen
+        .to('.bouillon'    ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three')//animation du panel bouillon
+        .to('#intro02'     ,0.5,{xPercent:-200  ,ease: Power1.easeOut},'three') //On dégage le panel question reponse
+        .to('#bouillonTxt' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'three') //On Fait apparaitre notre texte sur le bouillon
+        .to('#titreTileBouillon',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa question
+        .to('#descTileBouillon',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'three') //On fait apparaitre la famosa reponse
+
+        .addPause().addLabel('four')//bouillon terminado
+        .to('#bouillonTxt' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On décale le panel bouillon avec le texte
+        .to('#intro03' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On décale le premier panel d'intro avec le M. en bas à droite
+        .to('#BigNoodle' ,0.6,{xPercent:-100  ,ease: Power1.easeOut},'four') //Anime la grande illustration des nouiilles
+        .to('#LittleNoodle' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On anime la team naruto
+        .to('#noodleTxt' ,0.6,{xPercent:-200  ,ease: Power1.easeOut},'four') //On anime le bloc de texte
+        .to('#titreTileNoodle',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa question
+        .to('#descTileNoodle',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'four') //On fait apparaitre la famosa reponse
+
+        .addPause().addLabel('five')//Noodle terminado
+        .to('#tareTxt' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'five') //On anime le bloc de texte
+        .to('#illuTare' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'five') //On anime l'illu de la partie Tare
+        .to('#titreTileTare',0.7,{top:0, opacity: 1,ease: Power1.easeOut},'five') //On anime la partie sup du texte
+        .to('#descTileTare',0.7,{bottom:0, opacity: 1,ease: Power1.easeOut},'five') //On anime la partie inf du texte
+
+        .addPause().addLabel('six')//Oil terminado
+        .to('#oilTxt' ,0.5,{xPercent:200  ,ease: Power1.easeOut},'six') //On anime le bloc de texte
+        .to('#illuOil' ,0.5,{xPercent:-100  ,ease: Power1.easeOut},'six') //On anime l'illu de la partie Tare
+        .to('#titreTileOil', 0.7, { top: 0, opacity: 1, ease: Power1.easeOut }, 'six') //On anime la partie sup du texte
+        .to('#descTileOil', 0.7, { bottom: 0, opacity: 1, ease: Power1.easeOut }, 'six') //On anime la partie inf du texte
+
+        .addPause().addLabel('six')//Garniture terminado
+        .to('#toppingTxt' ,0.5,{yPercent:-100  ,ease: Power1.easeOut},'seven') //On anime le bloc de texte
+        .to('#illuTopping' ,0.5,{yPercent:100  ,ease: Power1.easeOut},'seven') //On anime l'illu de la partie Tare
+        .to('#titreTileTopping', 0.7, { top: 0, opacity: 1, ease: Power1.easeOut }, 'seven') //On anime la partie sup du texte
+        .to('#descTileTopping', 0.7, { bottom: 0, opacity: 1, ease: Power1.easeOut }, 'seven') //On anime la partie inf du texte
+
+		window.addEventListener('wheel', function(e) {
+			//console.log(e.detail)
+			//Normalize event wheel delta
+			//var delta = e.originalEvent.wheelDelta / 30 || -e.originalEvent.detail;
+			const delta = e.wheelDelta / 30 || -e.detail
+			if(!action.isActive() && delta < -1)
+			{
+				action.play();
+			}
+			else if(!action.isActive() && delta > 1)
+			{
+                const content = document.querySelector("#stepanim").innerHTML;
+				if(content !== "stopreverse"){
+                    action.reverse();
+                }
+			}
+			//e.preventDefault();
+        })
+        
+        document.querySelector("#goNext").addEventListener("click", function(){
+            action.play();
+        });
     }
 
- 	render() {
-         
-/*
-               <section className="container">
-                    <div className="row space40 align-items-center">
-                        <div className="col-12 col-md-6">
-                            <h1 className="h-title h1-title">Les ramens qu'est ce que c'est ?</h1>
-                            <p className="mt-4">C'est mon blog dédié à tout ce qui concerne Ramen. <br />Je l'ai créé dans le cadre de mon expérience d'apprentissage et pour partager  ce que j'ai appris tout au long de mon parcours vers la création de mon  Ramen "parfait".  Je posterai des recettes, des expériences (succès et échecs),  des photos de ramen, des critiques de livres, de restaurants,  d'équipement et d'ingrédients, fondamentalement  tout ce que je trouve en rapport  avec les ramen qui est intéressant !</p>
-                        </div>
-                        <div className="col-12 col-md-6">
-                            <IlluHome />
-                        </div>
-                    </div>
-                </section>
-                <section className="container mt-4">
-                    <div className="row space40 align-items-center ">
-                        <div className="col-12">
-                            <h2 className="h-title h1-title">Que trouve t-on dans un bol de ramen ?</h2>
-                            <p className="mt-4">Un bon bol de ramen se compose de 4 éléments clés. Ex non qui sint exercitation in consequat nostrud dolor amet consectetur culpa labore sit duis. Est eiusmod do ad officia labore ea ullamco elit ullamco do. Cupidatat elit in adipisicing exercitation cupidatat. Id cupidatat qui labore aute dolore duis culpa. Magna laborum est laborum velit labore occaecat excepteur ullamco culpa dolor sunt sint occaecat. Id in esse qui esse est elit quis deserunt ea ad ea sunt. Reprehenderit elit nisi est enim duis culpa sint qui et cillum esse commodo.</p>
-                        </div>
-                    </div>
-                    <div className="row space40 align-items-center mt-4">
-                        {categories.map(categorie => (
-                            <article key={categorie.id} className="col-sm-3">
-                                <BackgroundImage
-                                    Tag="section"
-                                    className="clip-polygon"
-                                    fluid={categorie.vignette.fluid}
-                                    backgroundColor={`#040e18`}
-                                >
-                                    <h3 className="h-title h1-title text-white">
-                                        <Link to={`/recettes/${categorie.slug}`} >{categorie.titre}</Link>
-                                    </h3>
-                                </BackgroundImage>
-                            </article>
-                        ))}
-                    </div>
-                </section>
-
-
- */       
-		const { data } = this.props
-		//const siteTitle = data.site.siteMetadata.title
-        const categories = data.allContentfulCategorie.nodes
-		return(
+    render(){
+        return(
             <>
-                <SEO title="Home" />
-                <div className="master-container">
-                    <div className="block-logo">
-                        <Fade>
+                <div id="wrapper-logo" className="wrapper-logo">
+                    <div className="relative">
+                        <div className="block-logo">
                             <RamenNoobTxt />
-                        </Fade>
-                        <Zoom delay={3500} clear>
-                            <blockquote className="quote-logo">From ramen noob to ramen lord</blockquote>
-                        </Zoom>
+                        </div>
                     </div>
                 </div>
-                <Fade delay={4500}>
-                    <section className="container">
-                        <div className="row space40 align-items-center">
-                            <div className="col-12 col-md-6">
-                                <h1 className="h-title h1-title">Les ramens qu'est ce que c'est ?</h1>
-                                <p className="mt-4">C'est mon blog dédié à tout ce qui concerne Ramen. <br />Je l'ai créé dans le cadre de mon expérience d'apprentissage et pour partager  ce que j'ai appris tout au long de mon parcours vers la création de mon  Ramen "parfait".  Je posterai des recettes, des expériences (succès et échecs),  des photos de ramen, des critiques de livres, de restaurants,  d'équipement et d'ingrédients, fondamentalement  tout ce que je trouve en rapport  avec les ramen qui est intéressant !</p>
-                            </div>
-                            <div className="col-12 col-md-6">
-                                <IlluHome />
-                            </div>
-                        </div>
-                    </section>
-                    <section className="container mt-4">
-                        <div className="row space40 align-items-center ">
-                            <div className="col-12">
-                                <h2 className="h-title h1-title">Que trouve t-on dans un bol de ramen ?</h2>
-                                <p className="mt-4">Un bon bol de ramen se compose de 4 éléments clés. Ex non qui sint exercitation in consequat nostrud dolor amet consectetur culpa labore sit duis. Est eiusmod do ad officia labore ea ullamco elit ullamco do. Cupidatat elit in adipisicing exercitation cupidatat. Id cupidatat qui labore aute dolore duis culpa. Magna laborum est laborum velit labore occaecat excepteur ullamco culpa dolor sunt sint occaecat. Id in esse qui esse est elit quis deserunt ea ad ea sunt. Reprehenderit elit nisi est enim duis culpa sint qui et cillum esse commodo.</p>
-                            </div>
-                        </div>
-                        <div className="row space40 align-items-center mt-4">
-                            {categories.map(categorie => (
-                                <article key={categorie.id} className="col-sm-3">
-                                    <BackgroundImage
-                                        Tag="section"
-                                        className="clip-polygon"
-                                        fluid={categorie.vignette.fluid}
-                                        backgroundColor={`#040e18`}
-                                    >
-                                        <h3 className="h-title h1-title text-white">
-                                            <Link to={`/recettes/${categorie.slug}`} >{categorie.titre}</Link>
-                                        </h3>
-                                    </BackgroundImage>
-                                </article>
-                            ))}
-                        </div>
-                    </section>
-                </Fade>
+
+                <div className="block-logo-txt">
+                    <div className="top-logo" id="upperWrap">
+                        <p id="upper" className="title-site">
+                            <span className="hide-logo"> Ramen Noob</span>
+                        </p>
+                    </div>
+                    <div className="line-logo" id="line"></div>
+                    <div className="bottom-logo" id="lowerWrap">
+                        <blockquote id="lower" className="quote-logo">
+                            <span className="hide-logo">From Ramen Noob to Ramen Lord</span>
+                        </blockquote>
+                    </div>
+                </div>
+
+
+                <div id="goNext" className="go-next">
+                    <div className="go-next-container">
+                        <svg width="24" height="24" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.64645 7.35355C3.84171 7.54882 4.15829 7.54882 4.35355 7.35355L7.53553 4.17157C7.7308 3.97631 7.7308 3.65973 7.53553 3.46447C7.34027 3.2692 7.02369 3.2692 6.82843 3.46447L4 6.29289L1.17157 3.46447C0.976311 3.2692 0.659728 3.2692 0.464466 3.46447C0.269204 3.65973 0.269204 3.97631 0.464466 4.17157L3.64645 7.35355ZM3.5 -2.18557e-08L3.5 7L4.5 7L4.5 2.18557e-08L3.5 -2.18557e-08Z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div id="goRecettes" className="go-to-recettes">
+                    <div className="go-next-container">
+                        <AniLink swipe direction="left" to="/recettes">
+                            <svg width="24" height="24" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.64645 7.35355C3.84171 7.54882 4.15829 7.54882 4.35355 7.35355L7.53553 4.17157C7.7308 3.97631 7.7308 3.65973 7.53553 3.46447C7.34027 3.2692 7.02369 3.2692 6.82843 3.46447L4 6.29289L1.17157 3.46447C0.976311 3.2692 0.659728 3.2692 0.464466 3.46447C0.269204 3.65973 0.269204 3.97631 0.464466 4.17157L3.64645 7.35355ZM3.5 -2.18557e-08L3.5 7L4.5 7L4.5 2.18557e-08L3.5 -2.18557e-08Z" fill="white"/>
+                            </svg>
+                        </AniLink>
+                    </div>
+                </div>
+
+
+                <BackgroundIntro00 />
+
+                <div className="fromLeft intro01">
+
+                </div>
+
+				<div id="intro02" className="fromRight tile intro02">
+					<div className="titretile-container">
+                        <h1 id="titreTileRamen" className="titre-tile">Ramen ?</h1>
+                    </div>
+                    <p id="descTileRamen" className="desc-tile">
+                        C'est un délicieux plat  d'origine chinoise mais popularisé par les japonais.
+                        Ce bol de bonheur, c'est la parfaite combinaison de <span className="bold">cinq éléments</span>.<br className="d-none d-sm-block" />
+                        Retrouvez ici toutes les recettes pour en maitriser chacun des aspects.
+                    </p>
+				</div>
+
+
+				<div className="fromRight elemRight03a">
+
+				</div>
+
+				<div id="intro03" className="fromRight intro03">
+
+				</div>
+
+                {/*
+                    BOUILLON PART
+                    2 Blocs, Illustration + text
+                */}
+				<div className="fromCenter fullheight">
+                    <div id="panel-bouillon" className="item bouillon">
+                    </div>
+				</div>
+
+				<div id="bouillonTxt" className="fromRight tile bouillon-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileBouillon" className="titre-tile">Le bouillon</h2>
+                    </div>
+                    <div className="desctile-container noodle">
+                        <p id="descTileBouillon" className="desc-tile">
+                            C'est l'âme de votre bol, il peut-être de porc, de poulet, de poissons ou de légumes. 
+                            <br />C'est l'âme de votre bol
+                        </p>
+                    </div>
+				</div>
+
+                {/*
+                    NOODLES PART
+                */}
+				<div id="noodleTxt" className="fromRight tile noodle-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileNoodle" className="titre-tile">Nouilles</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileNoodle" className="desc-noodle desc-tile">
+                            C'est la base de tout bon bol de ramen. C'est lui qui vous réchauffe le cœur au sens propre comme au figuré. Avec une bonne gorgée d'un bon bouillon, votre corps vous fera exulter de plaisir un bon "Ahhhh~". Le bouillon commence avec des ingrédients de base qui sont souvent composés de poulet, de porc, de fruits de mer et/ou de légumes. <br />
+                            La clé d'un bon bouillon est d'extraire la saveur et le corps des ingrédients.
+                        </p>
+                    </div>
+				</div>
+				<div id="BigNoodle" className="fromRight fullheight noodle-big-illu">
+				</div>
+				<div id="LittleNoodle" className="fromRight noodle-small-illu">
+				</div>
+
+                {/*
+                    TARE PART
+                */}
+				<div id="tareTxt" className="fromRight tile bottom tare-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileTare" className="titre-tile">Tare</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileTare" className="desc-tare desc-tile">
+                            Shio, Shoyu, Miso... des mots qui préfixent le nom de votre bol de Ramen dans votre restaurant. Si ce n'est pas le cas fuyez ! <br /> 
+                            Ils constituent la sauce de votre ramen mais aussi la base de l'asaisonement. 
+                        </p>
+                    </div>
+				</div>
+				<div id="illuTare" className="fromRight illu-tare">
+				</div>
+
+                {/*
+                    OIL PART
+                */}
+				<div id="oilTxt" className="fromLeft tile oil-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileOil" className="titre-tile">L'huile</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileOil" className="desc-oil desc-tile">
+                            Shio, Shoyu, Miso... des mots qui préfixent le nom de votre bol de Ramen dans votre restaurant. Si ce n'est pas le cas fuyez ! <br /> 
+                            Ils constituent la sauce de votre ramen mais aussi la base de l'asaisonement. 
+                        </p>
+                    </div>
+				</div>
+				<div id="illuOil" className="fromRight illu-oil fullheight">
+				</div>
+
+
+                {/*
+                    TOPPING PART
+                */}
+				<div id="toppingTxt" className="fromBottomRight tile topping-txt">
+					<div className="titretile-container">
+                        <h2 id="titreTileTopping" className="titre-tile">La Garniture</h2>
+                    </div>
+                    <div className="desctile-container">
+                        <p id="descTileTopping" className="desc-topping desc-tile">
+                            Shio, Shoyu, Miso... des mots qui préfixent le nom de votre bol de Ramen dans votre restaurant. Si ce n'est pas le cas fuyez ! <br /> 
+                            Ils constituent la sauce de votre ramen mais aussi la base de l'asaisonement. 
+                        </p>
+                    </div>
+				</div>
+				<div id="illuTopping" className="fromTopLeft illu-topping fullheight">
+				</div>
+                <div id="stepanim" className="d-none"></div>
             </>
-		)
+        )
     }
 }
 
-export default IndexPage
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-
-    allContentfulCategorie {
-        nodes {
-            id
-            titre
-            slug
-            vignette {
-                fixed(width: 375) {
-                    src
-                    srcSet
-                    height
-                }
-                fluid {
-                    sizes
-                    src
-                    srcSet
-                    srcSetWebp
-                }
-            }
-        }
-    }
-
-    allContentfulArticle {
-      edges {
-        node {
-          slug
-          titre
-          description {
-            content {
-              content {
-                value
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+export default Index;

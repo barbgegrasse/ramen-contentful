@@ -13,3 +13,4 @@ export const onClientEntry = () => {
         console.log(`# IntersectionObserver is polyfilled!`)
     }
 }
+export { default as wrapRootElement } from './src/state/ReduxWrapper';

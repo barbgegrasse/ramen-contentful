@@ -1,15 +1,73 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import LeftNav from './LeftNav'
-import Transition from './Transition'
+import Menu from './Menu'
+import { ContextProviderComponent }  from '../Context'
+//import Transition from './Transition'
 
 
+class Layout extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { showIntro: true };
+    }
+
+    render(){
+        //console.log(this.state)
+        const {children} = this.props
+        return(
+            <StaticQuery
+                query={graphql`
+                    query SiteTitleQuery {
+                        site {
+                            siteMetadata {
+                                title
+                            }
+                        }
+                    }
+                `}
+                
+                render={data => (
+                    <>
+                        <Helmet
+                            title={data.site.siteMetadata.title}
+                            meta={[
+                                { name: 'description', content: 'Ramen Noob' },
+                                { name: 'keywords', content: 'Ramen, Tare' },
+                            ]}
+                        >
+                            <html lang="en" />
+                        </Helmet>
+                        <ContextProviderComponent>
+                            <div className="front main-container">
+                                <div className="central-container">
+                                    <main>
+                                        {/*<Transition location={location} >
+                                            {children}
+                                        </Transition>*/}
+                                        {children}
+                                    </main>
+                                </div>
+                            </div>
+                            <Menu />
+                        </ContextProviderComponent>
+                    </>
+                )}
+            />
+        )
+    }
+}
+
+Layout.propTypes = {
+    children: PropTypes.node.isRequired,
+}
+
+export default Layout
+
+/*
 const Layout = ({ children, location }) => (
-    /*
-        <LeftNav />
-    */
+
     <StaticQuery
         query={graphql`
             query SiteTitleQuery {
@@ -21,11 +79,10 @@ const Layout = ({ children, location }) => (
             }
         `}
         render={data => (
-            /*
-                                        <Transition location={location} >
-                                {children}
-                            </Transition>
-            */
+            //                            <Transition location={location} >
+            //                   {children}
+            //              </Transition>
+            
             <>
                 <Helmet
                     title={data.site.siteMetadata.title}
@@ -44,7 +101,18 @@ const Layout = ({ children, location }) => (
                         </main>
                     </div>
                 </div>
-        
+                <nav className="nav">
+                    <a href="#" className="nav__link">Home</a>
+                    <a href="#" className="nav__link">About</a>
+                    <a href="#" className="nav__link">Shop</a>
+                    <a href="#" className="nav__link">Contact</a>
+                </nav>
+
+                <div className="hamburger">
+                    <span className="hamburger__patty"></span>
+                    <span className="hamburger__patty"></span>
+                    <span className="hamburger__patty"></span>
+                </div>
             </>
         )}
     />
@@ -55,6 +123,11 @@ Layout.propTypes = {
 }
 
 export default Layout
+*/
+
+
+
+
 
 /*
 	return (
